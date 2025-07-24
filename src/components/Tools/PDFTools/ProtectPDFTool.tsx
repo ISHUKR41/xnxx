@@ -125,8 +125,8 @@ export const ProtectPDFTool: React.FC = () => {
       
       pages.forEach(page => {
         const { width, height } = page.getSize();
-        page.drawText('🔒 PROTECTED', {
-          x: width - 100,
+        page.drawText('PROTECTED', {
+          x: width - 80,
           y: height - 30,
           size: 10,
           font,
