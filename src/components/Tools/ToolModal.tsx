@@ -10,6 +10,7 @@ import { PDFToPowerPointTool } from './PDFTools/PDFToPowerPointTool';
 import { ResizeImageTool } from './ImageTools/ResizeImageTool';
 import { CompressImageTool } from './ImageTools/CompressImageTool';
 import { TextToPDFTool } from './TextTools/TextToPDFTool';
+import { ProtectPDFTool } from './PDFTools/ProtectPDFTool';
 
 interface ToolModalProps {
   isOpen: boolean;
@@ -27,6 +28,8 @@ export const ToolModal: React.FC<ToolModalProps> = ({ isOpen, onClose, toolId, t
         return <SplitPDFTool />;
       case 'compress-pdf':
         return <CompressPDFTool />;
+      case 'protect-pdf':
+        return <ProtectPDFTool />;
       case 'pdf-to-word':
         return <PDFToWordTool />;
       case 'pdf-to-powerpoint':
