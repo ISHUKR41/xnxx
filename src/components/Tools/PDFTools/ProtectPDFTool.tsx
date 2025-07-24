@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Upload, FileText, Lock, Eye, EyeOff, Download, Clock, Shield, CheckCircle, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
+import { AIAssistant } from '../AIAssistant';
 
 interface UploadedFile {
   file: File;
@@ -439,6 +440,14 @@ export const ProtectPDFTool: React.FC = () => {
           </CardContent>
         </Card>
       )}
+
+      {/* AI Assistant Integration */}
+      <div className="mt-8">
+        <AIAssistant 
+          context={uploadedFile ? `Working with PDF file: ${uploadedFile.name}` : ''}
+          taskType="pdf"
+        />
+      </div>
     </div>
   );
 };
