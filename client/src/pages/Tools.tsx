@@ -49,7 +49,7 @@ import {
   Users,
   ArrowUp
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'wouter';
 import { useToast } from '@/hooks/use-toast';
 import PageTransition from '@/components/ui/page-transition';
 

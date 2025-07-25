@@ -142,7 +142,7 @@ All colors MUST be HSL. Advanced design tokens for 3D-rich, ultra-animated landi
   }
 
   body {
-    @apply bg-background text-foreground font-inter overflow-x-hidden;
+    @apply bg-background text-foreground overflow-x-hidden;
     background: var(--gradient-hero);
   }
 
@@ -168,7 +168,7 @@ All colors MUST be HSL. Advanced design tokens for 3D-rich, ultra-animated landi
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-glow;
-	}
+        }
 }
 
 /* 3D Flip Card Styles */

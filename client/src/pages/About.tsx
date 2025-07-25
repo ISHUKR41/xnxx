@@ -26,7 +26,7 @@ import {
   ChevronDown,
   Search
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'wouter';
 
 const About = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
