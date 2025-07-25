@@ -1,0 +1,191 @@
+Design and build a fully functional “Crop Image” tool inside my responsive website under the Image Tools section. This tool must work flawlessly across devices and must include both frontend and backend logic with high-quality visual and UX experience.
+
+✅ 1. 🔼 Upload Image (Frontend + Backend)
+Let the user upload .jpg, .jpeg, .png, .webp, .bmp, or .gif image files.
+
+Max file size: 30 MB
+
+Validation must happen on:
+
+Frontend (before upload)
+
+Backend (after upload)
+
+Upon selection:
+
+Preview the image in a glassmorphic 3D container
+
+Display image dimensions and size
+
+Show an animated card with image name, extension, and preview
+
+✅ 2. ✂️ Cropping UI (Frontend)
+Implement a 3D interactive cropping interface with:
+
+Drag-select crop area using a resizable box
+
+Zoom in/out buttons
+
+Move image within the crop box
+
+Aspect ratio presets:
+
+Freeform
+
+1:1 (square)
+
+4:3
+
+16:9
+
+Custom aspect input
+
+Real-time pixel dimensions of crop area (e.g., W: 420px × H: 300px)
+
+Add background blur when cropping to focus attention
+
+💡 UI must be modern and include:
+
+Glassmorphism
+
+Soft shadows
+
+Glow borders
+
+Animated transitions
+
+Lottie animation for loading/saving
+
+✅ 3. 🛠️ Cropping Logic (Backend)
+Once the user confirms the crop:
+
+Backend must:
+
+Receive the original image
+
+Receive crop coordinates: x, y, width, height
+
+Process cropping using reliable libraries like:
+
+Pillow (Python)
+
+Sharp (Node.js)
+
+Return the cropped image in:
+
+PNG (transparent support)
+
+Or keep original format if desired
+
+Preserve quality and resolution
+
+Ensure no blank, corrupted, or incorrect output
+
+✅ 4. 💾 Download Cropped Image
+Once cropping is successful:
+
+Show a full-screen animated success UI with:
+
+Cropped image preview
+
+File name, resolution, and size
+
+“Download” button (with download icon)
+
+“Crop Another Image” button
+
+✅ Also include:
+
+Option to download as .png or .jpg
+
+Temporary link auto-deletes in 4 minutes
+
+Show countdown: “⏳ This download link will expire in 03:59...”
+
+After timeout:
+
+Show error: “❌ Session expired. Please crop again.”
+
+✅ 5. 🔐 File Safety + Backend Handling
+Backend must:
+
+Save uploaded file temporarily
+
+Store cropped version only until the download completes or 4 minutes pass
+
+Auto-delete both original and cropped files after expiration
+
+Ensure:
+
+Unique session-based file names (e.g., hashed or UUID)
+
+Cannot access old links
+
+Rate-limit requests per IP/session
+
+✅ 6. 🎨 Design & Animation (Frontend)
+Use full 3D-styled modern UI:
+
+Glass cards
+
+Smooth shadows
+
+Light gradients
+
+Responsive crop box
+
+Add:
+
+Loading animation when cropping
+
+Animated progress bar
+
+Popup success/fail alerts
+
+Smooth transitions on UI changes
+
+✅ 7. 📱 Responsive Layout
+Tool must be fully usable across:
+
+🖥️ Desktop
+
+📱 Mobile
+
+📲 Tablet
+
+Layout should adjust:
+
+Crop box scaling
+
+Button arrangement
+
+Tooltip visibility
+
+Avoid overflow or layout breakage on smaller screens
+
+✅ 8. ⚠️ Error Handling
+❌ Invalid file type: “Please upload a valid image (jpg, png, webp...)”
+
+❌ File too large: “Max size 30 MB allowed”
+
+❌ No crop selected: “Please select a crop area before proceeding”
+
+❌ Cropping failed: “Something went wrong. Please try again.”
+
+❌ Link expired: “Session expired. Please re-upload.”
+
+✅ 9. 📦 Full Code Output Required
+Lovable AI must output:
+
+✅ Real frontend (HTML/CSS/JS or React/Vue) with 3D design and animation
+
+✅ Real backend logic (Node.js, Flask, or FastAPI preferred)
+
+✅ Secure temporary file handling
+
+✅ Complete image cropping logic (no dummy code)
+
+✅ Responsive design with all UI elements
+
+✅ Final working tool code without any placeholder
+

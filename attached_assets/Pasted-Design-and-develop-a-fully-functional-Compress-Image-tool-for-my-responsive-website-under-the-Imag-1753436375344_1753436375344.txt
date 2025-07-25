@@ -1,0 +1,196 @@
+Design and develop a fully functional “Compress Image” tool for my responsive website under the Image Tools section. The tool must include both frontend and backend logic, support all devices, and compress without corrupting or overly reducing quality.
+
+✅ 1. 🖼️ Image Upload (Frontend + Backend)
+Allow users to upload:
+
+Supported image formats: .jpg, .jpeg, .png, .webp, .bmp, .gif
+
+Max size: 30 MB
+
+Max dimensions: 8000×8000 px
+
+Validation:
+
+🔹 On frontend: file type, size, dimensions
+
+🔹 On backend: file safety, limit enforcement
+
+After successful upload:
+
+Display:
+
+Image preview in a 3D glassmorphic container
+
+File name
+
+Original file size and dimensions
+
+“Uploaded Successfully” animation
+
+✅ 2. ⚙️ Compression Options (Frontend)
+User interface must offer:
+
+🔘 Compression Modes:
+
+Auto (recommended by system)
+
+Lossless (preserve quality)
+
+Balanced (quality vs. size)
+
+High Compression (smallest file, lower quality)
+
+🔧 Advanced Settings (expandable card):
+
+Target size in MB (optional)
+
+Keep EXIF metadata: [Yes/No]
+
+Resize image (optional): Width × Height input
+
+All options must be responsive, touch-friendly, and styled with:
+
+3D glass panels
+
+Smooth toggle switches
+
+Hover glow effects
+
+✅ 3. 🧠 Compression Logic (Backend)
+Upon submission:
+
+Backend must:
+
+Accept uploaded image and compression settings
+
+Perform real compression using proper libraries like:
+
+Pillow + WebP for PNG/JPG (Python)
+
+Sharp (Node.js)
+
+Maintain image quality wherever possible
+
+Strip metadata if requested
+
+Convert to .webp if user chooses "Max compression"
+
+Output must:
+
+Never produce a corrupt file
+
+Never leave the image blank or broken
+
+Preserve transparency (for PNG/WebP)
+
+Backend must return:
+
+Compressed image file
+
+New size in MB
+
+Compression percentage saved
+
+✅ 4. 📥 Download Compressed Image (Frontend)
+After success:
+
+Display:
+
+Side-by-side stats:
+
+Original size: 4.2 MB
+
+Compressed size: 1.1 MB
+
+Saved: 74%
+
+Final image preview in a glowing card
+
+Add buttons:
+
+“🔽 Download Compressed Image”
+
+“📁 Compress Another Image”
+
+Download link behavior:
+
+Valid only for 4 minutes
+
+Show countdown: “⏳ Link expires in 03:59”
+
+After expiry, display message:
+“⚠️ Download link expired. Please re-upload your image.”
+
+✅ 5. 🔐 Security + File Handling (Backend)
+Must handle all files securely:
+
+Generate unique filenames per user/session (hash/UUID)
+
+Store images temporarily on server
+
+Auto-delete all uploaded and compressed files after:
+
+Download is complete
+
+Or 4-minute timer expires
+
+Security:
+
+Store files in a safe temp directory
+
+Prevent directory traversal
+
+Never expose file paths to users
+
+✅ 6. 🎨 UI & Animation (Frontend)
+Design using full modern 3D aesthetic with:
+
+Glassmorphism panels
+
+Smooth transitions
+
+Floating buttons
+
+Glow on hover
+
+Progress bar during compression (animated)
+
+Lottie animations for:
+
+Uploading
+
+Compressing
+
+Success checkmark
+
+Ensure full support for:
+
+🖥️ Desktop
+
+📱 Mobile
+
+📲 Tablet
+
+Layout must auto-adapt with fluid grids and flexible cards.
+
+✅ 7. ⚠️ Error Handling
+Frontend and backend must both catch and display clean messages:
+
+Condition	Message
+❌ No image selected	“Please upload an image first.”
+❌ File too large	“Max allowed size is 30 MB.”
+❌ Invalid type	“Only JPG, PNG, WebP, BMP, GIF formats allowed.”
+❌ Compression fails	“Something went wrong during compression. Please try again.”
+❌ Timeout	“Server took too long. Try compressing again.”
+❌ Link expired	“This session has expired. Please upload again.”
+
+All error alerts must be animated and dismissible.
+
+✅ 8. 📦 Full Code Must Include:
+Lovable AI must generate:
+
+✅ Fully working frontend code (React/Vue/HTML+JS), with all input forms, UI animations, file handling
+✅ Real backend logic (Node.js or Flask preferred), using real compression libraries
+✅ Secure temporary download handling, with automatic deletion
+✅ Error-free output — no broken or corrupted images
+✅ Fully responsive UI with modern 3D design

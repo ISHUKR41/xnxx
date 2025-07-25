@@ -1,0 +1,220 @@
+Design and develop a fully functional “Convert Image” tool for my responsive website. This tool must include a modern animated frontend with 3D effects, and a real backend conversion logic using appropriate libraries. The output must preserve quality and be error-free on all devices.
+
+✅ 1. 📤 Upload Input Image (Frontend + Backend)
+Allow users to upload:
+
+File types: .jpg, .jpeg, .png, .webp, .bmp, .gif, .tiff, .heic
+
+Max size: 40 MB
+
+Dimensions: Up to 8000×8000 px
+
+Preview image in a stylish, 3D glassmorphic card
+
+On image upload:
+
+Display:
+
+Live preview with animated zoom
+
+File name
+
+File size & format (e.g., “2.4 MB – PNG”)
+
+“Image uploaded successfully” animation with checkmark
+
+Frontend must validate file type and size before allowing conversion.
+
+✅ 2. 🔄 Conversion Format Selection (Frontend)
+Let user select a target format from a dropdown:
+
+JPG
+
+PNG
+
+WEBP
+
+BMP
+
+GIF
+
+TIFF
+
+Conversion settings UI must include:
+
+Dropdown menu (with icon per format)
+
+Optional checkbox: “Preserve transparency” (enabled only for PNG/WEBP)
+
+Optional checkbox: “Convert to grayscale”
+
+Optional input: “Resize before converting” → Width × Height fields
+
+UI must be:
+
+3D-styled
+
+Responsive
+
+Animated on selection change
+
+Show format preview on hover (e.g., PNG transparency icon).
+
+✅ 3. 🧠 Backend Conversion Logic
+Once user clicks “Convert Image”, the backend must:
+
+Accept the uploaded file
+
+Detect original format
+
+Validate the selected output format
+
+Convert using real image-processing libraries:
+
+Python (Pillow)
+
+Node.js (Sharp)
+
+Ensure:
+
+🔁 Preserve quality
+
+✅ If requested: resize image
+
+🧼 Strip metadata if needed
+
+🔍 Preserve transparency if checkbox enabled (PNG/WEBP)
+
+🖤 Convert to grayscale if user selected
+
+Backend must return:
+
+✅ Final converted image
+
+✅ Format info, new size, and download link
+
+🚫 Never allow corrupted or blank output
+
+✅ 4. 📥 Download Converted Image (Frontend)
+Once conversion is done:
+
+Display result in a side-by-side layout:
+
+🔹 Left: Original Image
+
+🔹 Right: Converted Image
+
+Show:
+
+File size difference (before vs after)
+
+Conversion success animation
+
+“📥 Download Image” button
+
+⚠️ The download link must:
+
+Be unique per session
+
+Auto-expire in 4 minutes
+
+Show live countdown: “⏳ Link expires in 03:45”
+
+Auto-delete image from server after expiry
+
+Add optional buttons:
+
+“🔁 Convert Another Image”
+
+“📁 Save as ZIP” (if multiple versions generated)
+
+✅ 5. 🔐 Backend File Handling & Security
+All files must be handled securely:
+
+🔒 Use hashed or UUID-based filenames
+
+🗂️ Store files in a private temp directory
+
+🧹 Auto-delete:
+
+After download is complete
+
+Or after 4-minute expiry
+
+Protect backend:
+
+Validate file type, MIME, size
+
+Strip EXIF/meta if needed
+
+Never store permanent logs of user images
+
+Use mimetypes, image-type, or library-based validation
+
+✅ 6. 🎨 Frontend Design (Modern 3D)
+Design frontend UI with:
+
+✨ 3D floating cards
+
+Glassmorphism panels
+
+Hover glow + click ripple effects
+
+Lottie animations for:
+
+Uploading
+
+Converting
+
+Success check
+
+Live progress bar during conversion (use animated bars or spinners)
+
+Make sure all components are:
+
+🎯 Accessible (tab, keyboard)
+
+📱 Responsive (mobile, tablet, desktop)
+
+🎨 Styled consistently with your brand
+
+✅ 7. ⚠️ Error Handling (Frontend + Backend)
+Catch all possible errors and show clean messages:
+
+Type	Message
+❌ No file selected	“Please select an image to convert.”
+❌ Unsupported format	“That format is not supported.”
+❌ Too large	“Max allowed file size is 40 MB.”
+❌ Backend error	“Something went wrong during conversion.”
+❌ Expired download	“This download link has expired.”
+
+All alerts should fade-in, auto-close after 8s, and be dismissible.
+
+✅ 8. 📦 What Lovable AI Must Generate:
+Lovable AI must return:
+
+✅ Fully working frontend code with:
+
+Upload form
+
+Format selector
+
+Compression settings
+
+Animated 3D UI
+
+Responsive layout
+
+✅ Fully working backend code using real libraries:
+
+Handle file upload, validation
+
+Convert image to selected format
+
+Return actual converted file
+
+Secure download link with 4-minute expiry
+
+Auto-delete after expiry
+
+✅ Error-free logic — no broken files, no fake processing
