@@ -27,8 +27,8 @@ const Step: React.FC<StepProps> = ({ number, icon, title, description, delay }) 
         </div>
       </div>
     </div>
-    <h3 className="text-lg sm:text-xl font-bold text-foreground px-2">{title}</h3>
-    <p className="text-sm sm:text-base text-foreground-secondary leading-relaxed max-w-sm mx-auto px-4">{description}</p>
+    <h3 className="text-lg sm:text-xl font-bold text-white px-2">{title}</h3>
+    <p className="text-sm sm:text-base text-white leading-relaxed max-w-sm mx-auto px-4">{description}</p>
   </div>
 );
 
@@ -103,10 +103,10 @@ export const HowItWorks: React.FC = () => {
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6">
             How It Works
           </h2>
-          <p className="text-foreground-secondary text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-white text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto leading-relaxed px-4">
             Get your question papers in just 3 simple steps. It's that easy!
           </p>
         </div>
@@ -156,10 +156,10 @@ export const HowItWorks: React.FC = () => {
         <div className="mt-16 sm:mt-20">
           <div className="glass-intense rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto">
             <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">
                 Try Our Interactive Demo
               </h3>
-              <p className="text-foreground-secondary text-sm sm:text-base">
+              <p className="text-white text-sm sm:text-base">
                 Experience the process yourself with our live demo
               </p>
             </div>
@@ -168,24 +168,24 @@ export const HowItWorks: React.FC = () => {
               <Card className="card-feature hover-scale cursor-pointer touch-target">
                 <CardContent className="p-4 sm:p-6 text-center">
                   <Search className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-primary mx-auto mb-3 sm:mb-4" />
-                  <h4 className="font-bold text-foreground mb-2 text-sm sm:text-base">Search Demo</h4>
-                  <p className="text-xs sm:text-sm text-foreground-secondary">Try searching for "JEE Main 2023"</p>
+                  <h4 className="font-bold text-white mb-2 text-sm sm:text-base">Search Demo</h4>
+                  <p className="text-xs sm:text-sm text-white">Try searching for "JEE Main 2023"</p>
                 </CardContent>
               </Card>
 
               <Card className="card-feature hover-scale cursor-pointer touch-target">
                 <CardContent className="p-4 sm:p-6 text-center">
                   <Filter className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-secondary mx-auto mb-3 sm:mb-4" />
-                  <h4 className="font-bold text-foreground mb-2 text-sm sm:text-base">Filter Demo</h4>
-                  <p className="text-xs sm:text-sm text-foreground-secondary">See our advanced filtering in action</p>
+                  <h4 className="font-bold text-white mb-2 text-sm sm:text-base">Filter Demo</h4>
+                  <p className="text-xs sm:text-sm text-white">See our advanced filtering in action</p>
                 </CardContent>
               </Card>
 
               <Card className="card-feature hover-scale cursor-pointer touch-target">
                 <CardContent className="p-4 sm:p-6 text-center">
                   <Download className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-accent mx-auto mb-3 sm:mb-4" />
-                  <h4 className="font-bold text-foreground mb-2 text-sm sm:text-base">Download Demo</h4>
-                  <p className="text-xs sm:text-sm text-foreground-secondary">Experience instant PDF downloads</p>
+                  <h4 className="font-bold text-white mb-2 text-sm sm:text-base">Download Demo</h4>
+                  <p className="text-xs sm:text-sm text-white">Experience instant PDF downloads</p>
                 </CardContent>
               </Card>
             </div>
@@ -196,19 +196,19 @@ export const HowItWorks: React.FC = () => {
         <div className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
           <div className="space-y-1 sm:space-y-2 p-3 sm:p-4 rounded-lg bg-background-secondary/30">
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text">2.5s</div>
-            <p className="text-xs sm:text-sm text-foreground-secondary">Average Search Time</p>
+            <p className="text-xs sm:text-sm text-white">Average Search Time</p>
           </div>
           <div className="space-y-1 sm:space-y-2 p-3 sm:p-4 rounded-lg bg-background-secondary/30">
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text-secondary">99.9%</div>
-            <p className="text-xs sm:text-sm text-foreground-secondary">Download Success Rate</p>
+            <p className="text-xs sm:text-sm text-white">Download Success Rate</p>
           </div>
           <div className="space-y-1 sm:space-y-2 p-3 sm:p-4 rounded-lg bg-background-secondary/30">
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text-accent">24/7</div>
-            <p className="text-xs sm:text-sm text-foreground-secondary">Always Available</p>
+            <p className="text-xs sm:text-sm text-white">Always Available</p>
           </div>
           <div className="space-y-1 sm:space-y-2 p-3 sm:p-4 rounded-lg bg-background-secondary/30">
             <div className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text">500MB/s</div>
-            <p className="text-xs sm:text-sm text-foreground-secondary">Download Speed</p>
+            <p className="text-xs sm:text-sm text-white">Download Speed</p>
           </div>
         </div>
       </div>

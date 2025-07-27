@@ -111,20 +111,20 @@ export const PDFToWordTool: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center space-y-2">
-        <h2 className="text-3xl font-bold text-foreground">PDF to Word Converter</h2>
-        <p className="text-foreground-secondary">
+        <h2 className="text-3xl font-bold text-white">PDF to Word Converter</h2>
+        <p className="text-white">
           Convert PDF documents to editable Word format while preserving layout and formatting.
         </p>
       </div>
 
       {/* Important Notice */}
-      <Card className="bg-yellow-50 border-yellow-200">
+      <Card className="bg-gray-800 border-yellow-500/50">
         <CardContent className="p-4">
           <div className="flex items-start space-x-3">
-            <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-yellow-400 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-yellow-800 mb-1">Development Notice</h4>
-              <p className="text-sm text-yellow-700">
+              <h4 className="font-semibold text-yellow-400 mb-1">Development Notice</h4>
+              <p className="text-sm text-white">
                 This tool currently provides text extraction. Full Word conversion with formatting 
                 will be available in the next update. The output will be a text file (.txt) containing 
                 the extracted content.

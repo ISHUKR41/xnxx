@@ -112,10 +112,10 @@ export const CategoryCarousel: React.FC = () => {
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6">
             Explore by Category
           </h2>
-          <p className="text-foreground-secondary text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-white text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto leading-relaxed px-4">
             From Class 9 to PhD level - find question papers for every examination and course in India
           </p>
         </div>
@@ -131,10 +131,10 @@ export const CategoryCarousel: React.FC = () => {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-3 sm:mb-4">
                   <div className="space-y-1 sm:space-y-2 flex-1 pr-2">
-                    <h3 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-primary transition-colors">
                       {category.title}
                     </h3>
-                    <p className="text-foreground-secondary text-xs sm:text-sm leading-relaxed">
+                    <p className="text-white text-xs sm:text-sm leading-relaxed">
                       {category.description}
                     </p>
                   </div>
@@ -149,13 +149,13 @@ export const CategoryCarousel: React.FC = () => {
                     {category.subjects.slice(0, 3).map((subject) => (
                       <span
                         key={subject}
-                        className="px-2 py-1 bg-background/30 rounded-full text-xs text-foreground-secondary border border-border/30"
+                        className="px-2 py-1 bg-background/30 rounded-full text-xs text-white border border-border/30"
                       >
                         {subject}
                       </span>
                     ))}
                     {category.subjects.length > 3 && (
-                      <span className="px-2 py-1 bg-background/30 rounded-full text-xs text-foreground-secondary border border-border/30">
+                      <span className="px-2 py-1 bg-background/30 rounded-full text-xs text-white border border-border/30">
                         +{category.subjects.length - 3}
                       </span>
                     )}
@@ -213,10 +213,10 @@ export const CategoryCarousel: React.FC = () => {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-4">
                   <div className="space-y-2">
-                    <h3 className="text-lg xl:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-lg xl:text-xl font-bold text-white group-hover:text-primary transition-colors">
                       {category.title}
                     </h3>
-                    <p className="text-foreground-secondary text-sm leading-relaxed">
+                    <p className="text-white text-sm leading-relaxed">
                       {category.description}
                     </p>
                   </div>
@@ -231,7 +231,7 @@ export const CategoryCarousel: React.FC = () => {
                     {category.subjects.slice(0, 4).map((subject) => (
                       <span
                         key={subject}
-                        className="px-3 py-1 bg-background/30 rounded-full text-xs text-foreground-secondary border border-border/30"
+                        className="px-3 py-1 bg-background/30 rounded-full text-xs text-white border border-border/30"
                       >
                         {subject}
                       </span>

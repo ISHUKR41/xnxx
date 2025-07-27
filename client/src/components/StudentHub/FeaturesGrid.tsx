@@ -93,10 +93,10 @@ export const FeaturesGrid: React.FC = () => {
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6">
             Why Choose STUDENTHUB.COM?
           </h2>
-          <p className="text-foreground-secondary text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-white text-sm sm:text-base lg:text-lg xl:text-xl max-w-3xl mx-auto leading-relaxed px-4">
             Discover the features that make us India's most trusted platform for question papers and academic resources
           </p>
         </div>
@@ -118,10 +118,10 @@ export const FeaturesGrid: React.FC = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-12 sm:mt-16">
           <div className="glass-intense rounded-xl sm:rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto">
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">
               Ready to Experience the Future of Learning?
             </h3>
-            <p className="text-foreground-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+            <p className="text-white mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
               Join over 170 million students who have already discovered the power of organized, instant access to quality question papers.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

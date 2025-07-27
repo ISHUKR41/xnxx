@@ -397,7 +397,7 @@ export const EnhancedHeroSection: React.FC = () => {
               </Button>
             </Link>
             
-            <Button variant="outline" size="lg" className="w-full sm:w-auto border-blue-400/20 text-blue-400 hover:bg-blue-400/10 px-8 py-4 rounded-full group">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-full group">
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               Watch Demo
             </Button>
