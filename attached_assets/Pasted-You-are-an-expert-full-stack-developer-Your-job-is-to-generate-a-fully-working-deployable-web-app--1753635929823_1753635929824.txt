@@ -1,0 +1,263 @@
+You are an expert full-stack developer. Your job is to generate a fully working, deployable web app for a “Tools Section” with 25+ PDF, image, and utility tools. Every tool must include real backend logic and fully functional modern frontend. No admin panel is needed. The final code must run error-free on Replit, GitHub, or Vercel with real processing logic — not dummy.
+
+🎯 PROJECT GOALS
+✅ Each tool must:
+
+Work instantly without bugs
+
+Accept file/text input
+
+Perform conversion or processing correctly
+
+Return real downloadable output
+
+Auto-expire the file link in 4 minutes
+
+Handle scanned PDFs with real OCR (Tesseract)
+
+Preserve layout (PDF ↔ Word, PowerPoint, etc.)
+
+Compress files properly
+
+Never return corrupted, blank, or dummy output
+
+❌ No dummy logic
+
+❌ No AI API (no OpenAI, no Gemini)
+
+❌ No admin panel
+
+❌ No exposed file paths
+
+✅ All animations must be smooth on mobile/tablet/desktop
+
+⚙️ BEST BACKEND LANGUAGE
+🏆 Use Python (FastAPI) — because:
+
+Has best PDF/image processing libraries
+
+Supports OCR via pytesseract
+
+Integrates well with pdf2docx, PyMuPDF, Pillow, pdf2image
+
+Easy to handle timed file expiry via background tasks
+
+🧰 TOOLS TO BUILD (25 FULLY WORKING TOOLS)
+📄 PDF TOOLS
+PDF to Word – real .docx with layout + OCR
+
+Word to PDF – fonts, design, layout preserved
+
+PDF to PowerPoint – slides from PDF
+
+Merge PDF – combine multiple files
+
+Split PDF – by range or page numbers
+
+Compress PDF – reduce size, maintain layout
+
+Protect PDF – add password encryption
+
+Unlock PDF – remove password (if permitted)
+
+Convert Image to PDF – with preview thumbnails
+
+Convert PDF to Image – per-page JPG/PNG
+
+Extract Tables from PDF – export as Excel
+
+Scan PDF (OCR) – extract from scanned content
+
+Count Words/Pages/Characters – for PDFs
+
+🖼️ IMAGE TOOLS
+Crop Image – live preview cropping
+
+Compress Image – optimize with no visual loss
+
+Convert Image Format – JPG ↔ PNG ↔ WebP ↔ TIFF ↔ BMP
+
+🧠 UTILITY TOOLS
+Text to Speech – generate audio from text
+
+Summarize Text or PDF – offline summary logic
+
+Grammar Checker – basic grammar fix (no AI)
+
+QR Code Generator – input → QR PNG
+
+Text/Code Formatter – pretty-print text, code, JSON
+
+YouTube Thumbnail Downloader – grab preview image
+
+Instagram DP Viewer – extract profile photo
+
+Temporary File Share – share any file for 4 mins
+
+Word/Character Counter – text stats
+
+🖥️ FRONTEND REQUIREMENTS
+✅ Use: React + Tailwind CSS + Framer Motion + Shadcn/UI
+
+✅ Style:
+
+Glassmorphism UI (blur, glow, 3D hover)
+
+Card-based layout for tools
+
+Fully responsive: mobile/tablet/desktop
+
+Lottie or SVG loaders for upload/progress
+
+Toast messages for success/failure
+
+Animations: page transitions, hover effects, spinners
+
+✅ Features:
+
+Drag & drop file upload
+
+Input validations (type, size, extension)
+
+Animated progress bar during processing
+
+Countdown download button (auto-expire in 4 mins)
+
+Support keyboard + screen reader accessibility
+
+Tabs, dropdowns, sliders (where needed)
+
+🔐 BACKEND REQUIREMENTS
+✅ Use: FastAPI + Python
+
+✅ Libraries:
+
+PyMuPDF, pdf2docx, pdfminer.six (PDF)
+
+pdf2image, pytesseract, poppler-utils (OCR)
+
+Pillow, imageio, cv2, sharp (Images)
+
+python-docx, reportlab (Word/PDF)
+
+gTTS or pyttsx3 (TTS)
+
+qrcode, beautifulsoup, requests, re
+
+✅ Must support:
+
+File validation (max 50MB, supported types)
+
+Detect scanned PDF vs. text-based
+
+Convert using OCR only if needed
+
+Store in secure /tmp/ directory
+
+Delete files after 4 mins automatically
+
+Auto-generate 4-minute hashed download links
+
+Edge-case handling (invalid, empty, corrupted files)
+
+💾 FILE HANDLING
+Files uploaded → /tmp/uuid-filename.ext
+
+After 4 minutes → file deleted (via scheduler or job)
+
+Links returned like:
+
+bash
+Copy
+Edit
+/download/filename?id=secure_hash&expires=16923423
+If user opens after 4 mins → show:
+❌ “This file has expired.”
+
+🔁 TOOL ROUTE STRUCTURE
+Use modular structure like:
+
+bash
+Copy
+Edit
+/api/pdf-to-word
+/api/merge-pdf
+/api/compress-image
+/api/grammar-check
+/api/qr-generator
+...
+Each route:
+
+Accepts file/input
+
+Returns real result
+
+Uses real libraries
+
+Validates all parameters
+
+Sends user-friendly errors:
+
+“Invalid format”
+
+“OCR failed”
+
+“Link expired”
+
+“Conversion error”
+
+“File too large”
+
+📦 OUTPUT FORMAT REQUIRED
+AI must output:
+
+markdown
+Copy
+Edit
+📁 /frontend
+  - index.html
+  - App.js / main.jsx
+  - pages/
+  - components/
+  - tailwind.config.js
+
+📁 /backend
+  - main.py
+  - /routes/pdf_to_word.py
+  - /services/
+  - /temp/
+  - requirements.txt
+  - .env.example
+
+📁 /public/assets
+  - Lottie animations
+  - Icons, loaders
+🚫 STRICT RULES
+❌ NO OpenAI or Gemini
+
+❌ NO dummy return values
+
+❌ NO blank/corrupt files
+
+❌ NO skipped tools
+
+❌ NO insecure file storage
+
+❌ NO missing backend logic
+
+✅ MUST run directly on Replit/Vercel without setup errors
+
+✅ FINAL GOAL
+The AI must generate a deploy-ready project that works 100% — with:
+
+Real backend code (all tools functional)
+
+Modern, animated frontend
+
+Proper layout preservation
+
+Secure and smooth performance
+
+Temporary downloads, OCR, compression, all working
+
+Scalable and er...

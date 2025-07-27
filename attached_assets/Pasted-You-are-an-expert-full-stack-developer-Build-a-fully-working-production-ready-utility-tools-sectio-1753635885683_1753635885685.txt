@@ -1,0 +1,227 @@
+You are an expert full-stack developer. Build a fully working, production-ready utility tools section for a responsive website. This must include a complete codebase (frontend + backend) for 25+ tools, each of which works flawlessly, with real logic, no placeholders, and no dummy features.
+
+🧠 OBJECTIVE
+The tools section must be:
+
+✅ Fully functional and bug-free — every tool must perform actual conversion or processing using real backend libraries.
+
+✅ Modern, eye-catching UI — animated, smooth, fully responsive, and built with 3D effects (glassmorphism, glow, transitions).
+
+✅ OCR + layout preservation — for PDF/image tools where required.
+
+✅ Secure file handling — all uploads go to /tmp/, auto-delete after 4 minutes.
+
+✅ Mobile + desktop + tablet support — full responsiveness, animations must be GPU-accelerated and not slow UI.
+
+✅ Deploy-ready — must run on Replit, GitHub Pages (with backend), or Vercel with no errors.
+
+⚙️ BACKEND INSTRUCTIONS
+✅ Use: Python (FastAPI) – perfect for:
+
+PDF tools (via PyMuPDF, pdfminer, pdf2docx, etc.)
+
+OCR (via Tesseract, pdf2image)
+
+Image tools (via Pillow, OpenCV, ImageMagick)
+
+Text tools (string processing, summarization logic)
+
+Fast startup, async support, native background task handling
+
+✅ File processing logic:
+
+Store files in /tmp/
+
+Allow only .pdf, .docx, .pptx, .png, .jpg, .txt, etc.
+
+Auto-delete after 4 minutes (via background task)
+
+Auto-generate hashed download links:
+
+bash
+Copy
+Edit
+/download/file?id=hash&expires=timestamp
+✅ Real Libraries to Use:
+
+PDF: PyMuPDF, pdf2docx, pdfminer.six, pdfplumber
+
+OCR: pytesseract, pdf2image, poppler-utils
+
+Word/PPT: python-docx, python-pptx
+
+Images: Pillow, OpenCV, imageio, sharp (Node alternative)
+
+QR/Barcode: qrcode, python-barcode
+
+Speech: pyttsx3, gTTS
+
+Summary/Grammar: nltk, textstat, language-tool-python
+
+Excel: xlsxwriter, pandas, tabula-py
+
+✅ Error Handling:
+
+Corrupt files → “Unsupported or unreadable file.”
+
+OCR failure → “Scanned file could not be read.”
+
+Timeout → “Conversion took too long.”
+
+Expired → “File link expired. Please re-upload.”
+
+🎨 FRONTEND INSTRUCTIONS
+✅ Use:
+
+React.js
+
+TailwindCSS for layout + responsiveness
+
+Framer Motion for smooth animation
+
+Shadcn/UI for buttons, inputs, cards
+
+Lottie for progress loaders, success ticks
+
+✅ UI Style:
+
+Glassmorphism (blurred background, soft shadows)
+
+Animated buttons (glow on hover, press-down effects)
+
+File drop zones (drag-and-drop + animated icon)
+
+Animated countdown for download link (4 min)
+
+Beautiful card-style tool layout
+
+Animated transitions between steps (upload → process → download)
+
+SVG or emoji-based icons
+
+Smooth hover/click/slide/fade effects
+
+✅ Responsiveness:
+
+Mobile-first layout
+
+Collapsible tool groups for mobile
+
+Touch-friendly buttons
+
+Full keyboard navigation and screen reader support
+
+🔐 SECURITY REQUIREMENTS
+Files stored in /tmp/ and auto-deleted after 4 mins
+
+Do not expose full file paths
+
+Sanitize all inputs
+
+Validate file extensions and MIME types
+
+Use hashed download link + timestamp expiry
+
+Rate-limit uploads to prevent spam
+
+📦 TOOLS TO INCLUDE (FULL FUNCTIONALITY)
+📄 PDF Tools
+✅ PDF to Word (OCR + layout-preserved)
+
+✅ Word to PDF (fonts/images preserved)
+
+✅ PDF to PowerPoint
+
+✅ Merge PDF (multiple → 1)
+
+✅ Split PDF (by range or pages)
+
+✅ Compress PDF (lossless size reduction)
+
+✅ Protect PDF (add password)
+
+✅ Unlock PDF (remove password if allowed)
+
+✅ Convert Image to PDF
+
+✅ Convert PDF to Image
+
+✅ Extract Tables from PDF (→ Excel)
+
+✅ Scan PDF (OCR to text)
+
+✅ Count Words, Pages, Characters
+
+🖼 Image Tools
+✅ Crop Image (with live preview)
+
+✅ Compress Image
+
+✅ Convert Image Format (JPG ↔ PNG ↔ WebP ↔ BMP)
+
+🧠 AI / Utility Tools
+✅ Text to Speech (generate audio)
+
+✅ Summarize Text or PDF (offline logic)
+
+✅ Grammar Checker (no AI, use language-tool-python)
+
+✅ QR Code Generator
+
+✅ Text/Code Formatter
+
+✅ YouTube Thumbnail Downloader
+
+✅ Instagram DP Viewer
+
+✅ Temporary File Share (with 4-min expiry)
+
+✅ Word/Character Counter
+
+✅ FEATURES TO INCLUDE IN EACH TOOL
+Drag & drop upload area
+
+File size validation (Max 50MB)
+
+“Convert Now” animated button
+
+Lottie spinner during processing
+
+Result section with:
+
+Download link (4-min countdown)
+
+Copy-to-clipboard button (for text tools)
+
+Auto-clear expired output
+
+Friendly toast notifications:
+
+✅ Success: “Conversion Complete”
+
+❌ Error: “File unsupported” / “OCR Failed”
+
+💻 PROJECT OUTPUT FORMAT (Expected)
+pgsql
+Copy
+Edit
+📁 /frontend
+  📁 /components
+  📁 /pages
+  📁 /assets
+  📁 /animations
+  📝 tailwind.config.js
+  📝 postcss.config.js
+  📝 App.js
+  📝 index.html
+
+📁 /backend
+  📁 /routes (all APIs like pdf_to_word.py, compress_image.py)
+  📁 /services (conversion logic)
+  📁 /temp (auto-deleted files)
+  📝 main.py (FastAPI)
+  📝 utils.py
+  📝 requirements.txt
+
+📝 README.md (run + deploy instructions)
+📝 .env.example (for config values)
