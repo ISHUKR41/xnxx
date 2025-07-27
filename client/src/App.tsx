@@ -15,18 +15,25 @@ import NotFound from "./pages/NotFound";
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    // Simulate initial loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="dark min-h-screen bg-black text-white" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          {isLoading && (
-            <LoadingScreen 
-              onComplete={() => setIsLoading(false)}
-              duration={3000}
-            />
-          )}
+          <LoadingScreen 
+            isLoading={isLoading}
+            onComplete={() => setIsLoading(false)}
+          />
           {!isLoading && (
             <Router>
               <Switch>

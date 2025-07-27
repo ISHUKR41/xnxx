@@ -1,0 +1,117 @@
+You-re-an-expert-full-stack-developer-working-on-a-modern-fully-functional-utility-tools-section-fo--1753625180982_1753625180983.txt
+You-re-an-expert-full-stack-developer-working-on-a-modern-fully-functional-utility-tools-section-fo-1753622517669_1753622517670.txt
+You're an expert full-stack developer working on a modern, fully functional utility tools section for a responsive website. Your job is to build all essential PDF tools, image tools, and AI tools in fully working condition with complete backend + frontend code. Your output must not contain dummy logic or incomplete features. Each tool must have:
+
+Fully working backend code (Node.js with Express or Python Flask preferred, real processing libraries like pdf-lib, pytesseract, pdf2docx, pdf-poppler, sharp, ffmpeg, etc.)
+
+Beautiful, modern animated 3D UI (use TailwindCSS + Framer Motion + Shadcn/UI + responsive layout with glassmorphism)
+
+Secure temporary download page that expires automatically after 4 minutes.
+
+Proper layout preservation and error-free output (no corrupted, blank, or unreadable output files).
+
+Mobile + tablet + desktop support with full responsiveness and accessibility (keyboard + screen reader friendly).
+
+Animated progress bars, upload effects, drag-drop support, and interactive buttons.
+
+No missing features, bugs, or fake code.
+
+Each tool must work instantly after deployment on Replit, GitHub, or Vercel.
+
+Code must be scalable, optimized, and production-ready with no missing dependencies.
+
+Admin dashboard to monitor tool usage, file cleanup, and server logs.
+
+The tools to build (each with fully functional frontend + backend):
+
+PDF to Word (with OCR and layout preservation)
+
+Word to PDF (with font embedding and design preservation)
+
+PDF to PowerPoint
+
+Merge PDF
+
+Split PDF
+
+Compress PDF
+
+Protect PDF with password
+
+Unlock PDF
+
+Convert Image to PDF
+
+Convert PDF to Image
+
+Crop Image
+
+Compress Image
+
+Convert Image Format (e.g., JPG to PNG, PNG to WebP)
+
+Text to Speech
+
+Summarize Text or PDF
+
+AI Grammar Checker
+
+Extract Tables from PDF
+
+Scan PDF (OCR)
+
+Count Words/Pages/Characters
+
+YouTube Thumbnail Downloader
+
+Instagram DP Viewer
+
+QR Code Generator
+
+Text/Code Formatter
+
+All tools must include:
+
+✅ File input with drag-drop or browse
+
+✅ Real-time validation (file type, size, extension)
+
+✅ Conversion logic (not dummy)
+
+✅ Temporary download link that expires in 4 minutes
+
+✅ Server-side file cleanup after expiry
+
+✅ OCR support where needed (for scanned PDFs/images)
+
+✅ Full browser/device compatibility
+
+✅ Loading indicators and toast messages
+
+✅ Automatic error handling (invalid input, corrupt files, API timeout, etc.)
+
+🔒 Security: Files must be stored in secure /tmp/ directory, deleted after use, and no sensitive data should be logged or exposed.
+
+🧠 Performance: Use compression, lazy loading, CDN for assets, and proper pagination or stream-based logic for large files.
+
+⚙️ Admin Panel: A private dashboard (login protected) showing:
+
+Daily/weekly/monthly tool usage
+
+Files processed
+
+User IP logs (GDPR safe)
+
+Server logs, error logs
+
+Delete expired links or failed jobs manually
+
+🎯 Output format must include:
+
+Complete backend + frontend code for each tool
+
+Fully deployable project structure
+
+Clear instructions (where needed)
+
+No broken logic or placeholders
