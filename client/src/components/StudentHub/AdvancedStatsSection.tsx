@@ -78,40 +78,40 @@ export const AdvancedStatsSection: React.FC = () => {
 
   const mainStats = [
     {
-      icon: <Users className="w-8 h-8 text-blue-600" />,
+      icon: <Users className="w-8 h-8 text-blue-400" />,
       value: counters.students.toLocaleString(),
       label: "Active Students",
       suffix: "+",
       description: "Students worldwide trust our platform",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50"
+      color: "text-blue-400",
+      bgColor: "bg-gray-800"
     },
     {
-      icon: <Download className="w-8 h-8 text-green-600" />,
+      icon: <Download className="w-8 h-8 text-green-400" />,
       value: counters.downloads.toLocaleString(),
       label: "Total Downloads",
       suffix: "+",
       description: "Papers and resources downloaded",
-      color: "text-green-600",
-      bgColor: "bg-green-50"
+      color: "text-green-400",
+      bgColor: "bg-gray-800"
     },
     {
-      icon: <FileText className="w-8 h-8 text-purple-600" />,
+      icon: <FileText className="w-8 h-8 text-purple-400" />,
       value: counters.papers.toLocaleString(),
       label: "Question Papers",
       suffix: "+",
       description: "Previous year papers available",
-      color: "text-purple-600",
-      bgColor: "bg-purple-50"
+      color: "text-purple-400",
+      bgColor: "bg-gray-800"
     },
     {
-      icon: <GraduationCap className="w-8 h-8 text-orange-600" />,
+      icon: <GraduationCap className="w-8 h-8 text-orange-400" />,
       value: counters.universities.toLocaleString(),
       label: "Universities",
       suffix: "+",
       description: "Educational institutions covered",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50"
+      color: "text-orange-400",
+      bgColor: "bg-gray-800"
     }
   ];
 
@@ -176,17 +176,17 @@ export const AdvancedStatsSection: React.FC = () => {
 
 
   return (
-    <section id="stats-section" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="stats-section" className="py-20 bg-gradient-to-br from-gray-900 to-black">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 text-sm font-semibold">
             Platform Statistics
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Trusted by Students Worldwide
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Our platform has become the go-to destination for students seeking quality educational resources. 
             Here's the impact we're making in the academic community.
           </p>
@@ -197,14 +197,14 @@ export const AdvancedStatsSection: React.FC = () => {
           {mainStats.map((stat, index) => (
             <Card key={index} className={`${stat.bgColor} border-2 hover:shadow-xl transition-all duration-300 group`}>
               <CardContent className="p-8 text-center">
-                <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center justify-center w-16 h-16 bg-gray-700 rounded-full shadow-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   {stat.icon}
                 </div>
                 <div className={`text-4xl font-bold mb-2 ${stat.color}`}>
                   {stat.value}{stat.suffix}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{stat.label}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{stat.description}</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{stat.label}</h3>
+                <p className="text-sm text-gray-200 leading-relaxed">{stat.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -212,7 +212,7 @@ export const AdvancedStatsSection: React.FC = () => {
 
         {/* Performance Metrics */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Performance Excellence
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
@@ -222,14 +222,14 @@ export const AdvancedStatsSection: React.FC = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
                       {stat.icon}
-                      <h4 className="font-semibold text-lg text-gray-800">{stat.label}</h4>
+                      <h4 className="font-semibold text-lg text-white">{stat.label}</h4>
                     </div>
-                    <Badge variant="secondary" className="text-lg font-bold px-3 py-1">
+                    <Badge variant="secondary" className="text-lg font-bold px-3 py-1 bg-blue-600 text-white">
                       {stat.value}%
                     </Badge>
                   </div>
                   <Progress value={stat.value} className="mb-3" />
-                  <p className="text-sm text-gray-600">{stat.description}</p>
+                  <p className="text-sm text-gray-200">{stat.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -238,7 +238,7 @@ export const AdvancedStatsSection: React.FC = () => {
 
         {/* Growth Metrics */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Growing Every Day
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -246,16 +246,16 @@ export const AdvancedStatsSection: React.FC = () => {
               <Card key={index} className="hover:shadow-lg transition-all duration-300 group">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                    <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center group-hover:bg-gray-600 transition-colors">
                       {metric.icon}
                     </div>
-                    <Badge className="bg-green-100 text-green-800 text-xs">
+                    <Badge className="bg-green-600 text-white text-xs">
                       {metric.growth}
                     </Badge>
                   </div>
-                  <div className="text-2xl font-bold text-gray-800 mb-1">{metric.value}</div>
-                  <h4 className="font-medium text-gray-700 mb-1">{metric.metric}</h4>
-                  <p className="text-xs text-gray-500">{metric.period}</p>
+                  <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
+                  <h4 className="font-medium text-gray-200 mb-1">{metric.metric}</h4>
+                  <p className="text-xs text-gray-300">{metric.period}</p>
                 </CardContent>
               </Card>
             ))}
