@@ -6,6 +6,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Serve temp files for downloads
+app.use('/temp', express.static('temp'));
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

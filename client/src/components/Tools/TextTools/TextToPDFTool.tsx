@@ -56,9 +56,17 @@ export const TextToPDFTool: React.FC = () => {
         setProgress(prev => Math.min(prev + 20, 90));
       }, 200);
 
-      const response = await fetch('/api/text-tools/to-pdf', {
+      const response = await fetch('/api/text-tools/text-to-pdf', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text: text,
+          fontSize: parseInt(fontSize),
+          fontFamily: fontFamily,
+          margins: parseInt(margin)
+        })
       });
 
       clearInterval(progressInterval);

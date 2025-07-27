@@ -15,7 +15,7 @@ import { FooterSection } from './FooterSection';
 import { StatsCounter } from './StatsCounter';
 import { DetailedFeaturesSection } from './DetailedFeaturesSection';
 import { AdvancedStatsSection } from './AdvancedStatsSection';
-import { ComprehensiveToolsSection } from './ComprehensiveToolsSection';
+import { EnhancedComprehensiveToolsSection } from './EnhancedComprehensiveToolsSection';
 import { Interactive3DTourSection } from './Interactive3DTourSection';
 import { ComprehensiveBenefitsSection } from './ComprehensiveBenefitsSection';
 
@@ -37,8 +37,8 @@ export const LandingPage: React.FC = () => {
       {/* Detailed Features Section */}
       <DetailedFeaturesSection />
       
-      {/* Comprehensive Tools Section */}
-      <ComprehensiveToolsSection />
+      {/* Enhanced Comprehensive Tools Section */}
+      <EnhancedComprehensiveToolsSection />
       
       {/* Interactive 3D Tour Section */}
       <Interactive3DTourSection />

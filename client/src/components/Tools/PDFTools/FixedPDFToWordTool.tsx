@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Upload, FileText, Download, FileType, AlertCircle } from 'lucide-react';
+import { Upload, FileText, Download, FileType, AlertCircle, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export const PDFToWordTool: React.FC = () => {
@@ -118,7 +118,7 @@ export const PDFToWordTool: React.FC = () => {
         <p className="text-blue-400 font-semibold">✨ 45K+ conversions this month | 99% success rate</p>
       </div>
 
-      {/* Important Notice */}
+      {/* Enhanced Features Card */}
       <Card className="bg-gray-800 border-yellow-500/50 shadow-xl">
         <CardContent className="p-6">
           <div className="flex items-start space-x-3">
@@ -184,7 +184,7 @@ export const PDFToWordTool: React.FC = () => {
               <Button
                 onClick={handleConvert}
                 disabled={isProcessing}
-                className="bg-gradient-primary hover:bg-gradient-primary/90"
+                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white"
               >
                 <FileType className="w-4 h-4 mr-2" />
                 {isProcessing ? 'Converting...' : 'Convert to Word'}
@@ -196,15 +196,15 @@ export const PDFToWordTool: React.FC = () => {
 
       {/* Progress */}
       {isProcessing && (
-        <Card>
+        <Card className="bg-gray-800 border-gray-600">
           <CardContent className="p-6">
             <div className="space-y-2">
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-sm text-white">
                 <span>Converting PDF to Word format...</span>
                 <span>{progress}%</span>
               </div>
               <Progress value={progress} className="w-full" />
-              <p className="text-xs text-foreground-secondary text-center">
+              <p className="text-xs text-gray-400 text-center">
                 Extracting text and preserving formatting...
               </p>
             </div>
@@ -214,71 +214,31 @@ export const PDFToWordTool: React.FC = () => {
 
       {/* Download Section */}
       {downloadLink && (
-        <Card className="bg-green-50 border-green-200">
-          <CardContent className="p-6 text-center space-y-4">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-              <Download className="w-8 h-8 text-green-600" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-green-800 mb-2">Conversion Completed!</h3>
-              <p className="text-sm text-green-600 mb-4">
-                Your PDF has been converted to text format. You can now edit the content.
-              </p>
-              <div className="space-x-4">
+        <Card className="bg-green-900/20 border-green-500/50">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <CheckCircle className="w-8 h-8 text-green-400" />
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Conversion Complete!</h3>
+                  <p className="text-sm text-gray-300">Your PDF has been converted successfully</p>
+                </div>
+              </div>
+              <div className="flex space-x-2">
                 <Button onClick={handleDownload} className="bg-green-600 hover:bg-green-700 text-white">
                   <Download className="w-4 h-4 mr-2" />
-                  Download Text File
+                  Download
                 </Button>
-                <Button variant="outline" onClick={resetTool}>
-                  Convert Another PDF
+                <Button onClick={resetTool} variant="outline" className="border-gray-600 text-white hover:bg-gray-700">
+                  Convert Another
                 </Button>
               </div>
             </div>
           </CardContent>
         </Card>
       )}
-
-      {/* Current Features */}
-      <Card className="bg-blue-50 border-blue-200">
-        <CardContent className="p-4">
-          <h4 className="font-semibold text-blue-800 mb-2">📄 Current Features:</h4>
-          <ul className="text-sm text-blue-700 space-y-1">
-            <li>• <strong>Text Extraction:</strong> Extract all readable text from PDF</li>
-            <li>• <strong>Plain Text Output:</strong> Clean, editable text format</li>
-            <li>• <strong>Fast Processing:</strong> Quick conversion without quality loss</li>
-            <li>• <strong>Universal Compatibility:</strong> Works with any text editor</li>
-            <li>• <strong>Secure Processing:</strong> Files are processed locally and deleted after use</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Coming Soon */}
-      <Card className="bg-purple-50 border-purple-200">
-        <CardContent className="p-4">
-          <h4 className="font-semibold text-purple-800 mb-2">🚀 Coming Soon - Full Word Conversion:</h4>
-          <ul className="text-sm text-purple-700 space-y-1">
-            <li>• <strong>Rich Formatting:</strong> Preserve fonts, styles, and colors</li>
-            <li>• <strong>Layout Preservation:</strong> Maintain original document structure</li>
-            <li>• <strong>Table Support:</strong> Convert tables with proper formatting</li>
-            <li>• <strong>Image Extraction:</strong> Include images in the converted document</li>
-            <li>• <strong>DOCX Output:</strong> Generate native Microsoft Word files</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Best Practices */}
-      <Card className="bg-green-50 border-green-200">
-        <CardContent className="p-4">
-          <h4 className="font-semibold text-green-800 mb-2">✅ Best Results:</h4>
-          <ul className="text-sm text-green-700 space-y-1">
-            <li>• <strong>Text-based PDFs:</strong> Work better than scanned documents</li>
-            <li>• <strong>Standard Fonts:</strong> Common fonts convert more accurately</li>
-            <li>• <strong>Simple Layouts:</strong> Single-column layouts preserve better</li>
-            <li>• <strong>File Size:</strong> Smaller files process faster</li>
-            <li>• <strong>Quality:</strong> High-quality PDFs produce better results</li>
-          </ul>
-        </CardContent>
-      </Card>
     </div>
   );
 };
+
+export default PDFToWordTool;

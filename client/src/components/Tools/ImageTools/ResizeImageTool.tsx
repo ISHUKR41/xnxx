@@ -68,10 +68,54 @@ export const ResizeImageTool = () => {
   };
 
   const resizeImage = async () => {
-    if (!originalImage || !canvasRef.current) return;
+    if (!originalImage || !originalFile) return;
 
     setIsProcessing(true);
     setProgress(0);
+    
+    try {
+      const formData = new FormData();
+      formData.append('file', originalFile);
+      formData.append('width', newDimensions.width.toString());
+      formData.append('height', newDimensions.height.toString());
+      formData.append('maintainAspectRatio', maintainAspectRatio.toString());
+
+      // Simulate progress
+      const progressInterval = setInterval(() => {
+        setProgress(prev => Math.min(prev + 10, 90));
+      }, 200);
+
+      const response = await fetch('/api/image-tools/resize', {
+        method: 'POST',
+        body: formData
+      });
+
+      clearInterval(progressInterval);
+      setProgress(100);
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setResizedImage(url);
+        
+        toast({
+          title: "✅ Success!",
+          description: `Image resized to ${newDimensions.width}x${newDimensions.height} pixels`
+        });
+      } else {
+        const result = await response.json();
+        throw new Error(result.error || 'Failed to resize image');
+      }
+    } catch (error) {
+      console.error('Resize error:', error);
+      toast({
+        title: "❌ Resize Failed",
+        description: error instanceof Error ? error.message : "Failed to resize image",
+        variant: "destructive"
+      });
+    } finally {
+      setIsProcessing(false);
+    }
 
     try {
       const img = new Image();
