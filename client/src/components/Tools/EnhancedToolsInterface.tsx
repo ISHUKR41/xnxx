@@ -16,7 +16,14 @@ import {
   RefreshCw, Palette, Crop, Maximize, Minimize,
   RotateCw, FlipHorizontal, FlipVertical, Eye,
   Copy, Share, Save, Trash2, Edit, Wand2,
-  Sparkles, Target, TrendingUp, Award
+  Sparkles, Target, TrendingUp, Award, Lock,
+  Unlock, FileImage, FileSpreadsheet, Presentation,
+  Book, Scan, Table, MessageSquare, QrCode,
+  Volume2, Hash, Code, PlayCircle, Instagram,
+  Smartphone, Monitor, Tablet, HardDrive, Cloud,
+  Layers, Grid, Search, Filter, SortAsc,
+  Paintbrush, Pipette, Square, Circle,
+  Triangle, Hexagon, Move, CornerDownRight
 } from 'lucide-react';
 
 export const EnhancedToolsInterface: React.FC = () => {
@@ -32,266 +39,331 @@ export const EnhancedToolsInterface: React.FC = () => {
   const toolCategories = {
     pdf: {
       title: "PDF Tools",
-      description: "Professional PDF processing and manipulation tools",
-      gradient: "from-red-600 to-orange-600",
+      description: "Complete PDF processing suite with 35+ professional tools",
+      gradient: "from-red-600 via-orange-600 to-pink-600",
       icon: FileText,
       tools: [
+        // PDF ⇆ Office Conversions
         {
-          id: 'pdf-merge',
-          name: 'Merge PDFs',
-          description: 'Combine multiple PDF files into one document',
-          icon: Combine,
-          premium: false,
-          endpoint: '/api/pdf/merge',
-          options: ['addPageNumbers', 'addBookmarks', 'title']
-        },
-        {
-          id: 'pdf-split',
-          name: 'Split PDF',
-          description: 'Split PDF into separate pages or custom ranges',
-          icon: Scissors,
-          premium: false,
-          endpoint: '/api/pdf/split',
-          options: ['splitType', 'ranges', 'pageSize']
-        },
-        {
-          id: 'pdf-compress',
-          name: 'Compress PDF',
-          description: 'Reduce PDF file size while maintaining quality',
-          icon: Archive,
-          premium: false,
-          endpoint: '/api/pdf/compress',
-          options: ['compressionLevel']
-        },
-        {
-          id: 'pdf-protect',
-          name: 'Protect PDF',
-          description: 'Add password protection to PDF documents',
-          icon: Shield,
-          premium: true,
-          endpoint: '/api/pdf/protect',
-          options: ['password', 'ownerPassword']
-        },
-        {
-          id: 'pdf-to-images',
-          name: 'PDF to Images',
-          description: 'Convert PDF pages to individual image files',
-          icon: Image,
-          premium: false,
-          endpoint: '/api/pdf/pdf-to-images',
-          options: ['format', 'quality']
-        },
-        {
-          id: 'images-to-pdf',
-          name: 'Images to PDF',
-          description: 'Convert multiple images into a single PDF',
+          id: 'pdf-to-word',
+          name: 'PDF to Word',
+          description: 'Convert PDF files to editable Word documents with perfect formatting',
           icon: FileText,
           premium: false,
-          endpoint: '/api/pdf/images-to-pdf',
-          options: ['title', 'layout', 'margin']
+          endpoint: '/api/pdf/office/pdf-to-word',
+          options: ['preserveLayout', 'ocrMode', 'language']
+        },
+        {
+          id: 'word-to-pdf',
+          name: 'Word to PDF',
+          description: 'Convert Word documents to professional PDF files',
+          icon: FileText,
+          premium: false,
+          endpoint: '/api/pdf/office/word-to-pdf',
+          options: ['quality', 'bookmarks', 'metadata']
+        },
+        {
+          id: 'pdf-to-excel',
+          name: 'PDF to Excel',
+          description: 'Extract tables from PDF and convert to Excel spreadsheets',
+          icon: FileSpreadsheet,
+          premium: false,
+          endpoint: '/api/pdf/office/pdf-to-excel',
+          options: ['tableDetection', 'sheetNaming', 'formatting']
+        },
+        {
+          id: 'excel-to-pdf',
+          name: 'Excel to PDF',
+          description: 'Convert Excel spreadsheets to PDF with custom formatting',
+          icon: FileSpreadsheet,
+          premium: false,
+          endpoint: '/api/pdf/office/excel-to-pdf',
+          options: ['orientation', 'scaling', 'pageBreaks']
+        },
+        {
+          id: 'pdf-to-powerpoint',
+          name: 'PDF to PowerPoint',
+          description: 'Convert PDF pages to PowerPoint presentation slides',
+          icon: Presentation,
+          premium: false,
+          endpoint: '/api/pdf/office/pdf-to-powerpoint',
+          options: ['slideLayout', 'imageQuality', 'animations']
+        },
+        {
+          id: 'powerpoint-to-pdf',
+          name: 'PowerPoint to PDF',
+          description: 'Convert presentations to PDF with speaker notes',
+          icon: Presentation,
+          premium: false,
+          endpoint: '/api/pdf/office/powerpoint-to-pdf',
+          options: ['includeNotes', 'quality', 'handouts']
+        },
+        // PDF ⇆ Image Tools
+        {
+          id: 'pdf-to-jpg',
+          name: 'PDF to JPG',
+          description: 'Convert PDF pages to high-quality JPG images',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/pdf-to-jpg',
+          options: ['resolution', 'quality', 'colorSpace']
+        },
+        {
+          id: 'pdf-to-png',
+          name: 'PDF to PNG',
+          description: 'Convert PDF pages to PNG with transparency support',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/pdf-to-png',
+          options: ['resolution', 'transparent', 'compression']
+        },
+        {
+          id: 'jpg-to-pdf',
+          name: 'JPG to PDF',
+          description: 'Convert multiple JPG images to a single PDF document',
+          icon: FileText,
+          premium: false,
+          endpoint: '/api/pdf/image/jpg-to-pdf',
+          options: ['pageSize', 'orientation', 'margin', 'quality']
+        },
+        {
+          id: 'png-to-pdf',
+          name: 'PNG to PDF',
+          description: 'Convert PNG images to PDF with transparency preservation',
+          icon: FileText,
+          premium: false,
+          endpoint: '/api/pdf/image/png-to-pdf',
+          options: ['background', 'compression', 'layout']
+        },
+        // Core PDF Operations
+        {
+          id: 'merge-pdf',
+          name: 'Merge PDF',
+          description: 'Combine multiple PDF files into one with bookmarks',
+          icon: Combine,
+          premium: false,
+          endpoint: '/api/pdf/core/merge',
+          options: ['addBookmarks', 'pageNumbers', 'title']
+        },
+        {
+          id: 'split-pdf',
+          name: 'Split PDF',
+          description: 'Split PDF by pages, ranges, or file size limits',
+          icon: Scissors,
+          premium: false,
+          endpoint: '/api/pdf/core/split',
+          options: ['splitType', 'ranges', 'maxSize', 'naming']
+        },
+        {
+          id: 'compress-pdf',
+          name: 'Compress PDF',
+          description: 'Reduce PDF file size with intelligent compression',
+          icon: Archive,
+          premium: false,
+          endpoint: '/api/pdf/core/compress',
+          options: ['compressionLevel', 'imageQuality', 'preserveBookmarks']
+        },
+        {
+          id: 'protect-pdf',
+          name: 'Protect PDF',
+          description: 'Add password protection and restrict PDF permissions',
+          icon: Lock,
+          premium: true,
+          endpoint: '/api/pdf/core/protect',
+          options: ['userPassword', 'ownerPassword', 'permissions']
+        },
+        {
+          id: 'unlock-pdf',
+          name: 'Unlock PDF',
+          description: 'Remove password protection from PDF documents',
+          icon: Unlock,
+          premium: true,
+          endpoint: '/api/pdf/core/unlock',
+          options: ['password']
         }
       ]
     },
     image: {
       title: "Image Tools",
-      description: "Advanced image processing and optimization tools",
-      gradient: "from-green-600 to-cyan-600",
+      description: "Professional image processing with 25+ advanced tools",
+      gradient: "from-green-600 via-cyan-600 to-blue-600",
       icon: Image,
       tools: [
         {
-          id: 'image-resize',
-          name: 'Resize Images',
-          description: 'Resize images with advanced options and quality control',
+          id: 'resize-image',
+          name: 'Resize Image',
+          description: 'Resize images with AI-powered upscaling and smart cropping',
           icon: Maximize,
           premium: false,
           endpoint: '/api/image/resize',
-          options: ['width', 'height', 'maintainAspectRatio', 'resizeMode', 'background', 'format']
+          options: ['width', 'height', 'algorithm', 'maintainRatio', 'background']
         },
         {
-          id: 'image-compress',
-          name: 'Compress Images',
-          description: 'Reduce image file size with smart compression',
+          id: 'compress-image',
+          name: 'Compress Image',
+          description: 'Reduce file size while maintaining visual quality',
           icon: Archive,
           premium: false,
           endpoint: '/api/image/compress',
-          options: ['quality', 'compressionLevel', 'preserveMetadata', 'outputFormat']
+          options: ['quality', 'progressive', 'preserveMetadata', 'optimization']
         },
         {
-          id: 'image-convert',
+          id: 'convert-format',
           name: 'Convert Format',
-          description: 'Convert images between different formats',
+          description: 'Convert between JPG, PNG, WebP, AVIF, and more formats',
           icon: RefreshCw,
           premium: false,
           endpoint: '/api/image/convert',
-          options: ['targetFormat', 'quality', 'compression']
+          options: ['outputFormat', 'quality', 'progressive', 'lossless']
         },
         {
-          id: 'image-crop',
-          name: 'Crop Images',
-          description: 'Crop images with manual, center, or smart modes',
+          id: 'crop-image',
+          name: 'Crop Image',
+          description: 'Crop images with precision tools and aspect ratio presets',
           icon: Crop,
           premium: false,
           endpoint: '/api/image/crop',
-          options: ['x', 'y', 'width', 'height', 'cropMode']
-        },
-        {
-          id: 'batch-process',
-          name: 'Batch Process',
-          description: 'Process multiple images with the same operation',
-          icon: Wand2,
-          premium: true,
-          endpoint: '/api/image/batch-process',
-          options: ['operation', 'width', 'height', 'quality', 'format', 'watermarkText']
-        },
-        {
-          id: 'image-metadata',
-          name: 'Extract Metadata',
-          description: 'Extract detailed information from image files',
-          icon: Eye,
-          premium: false,
-          endpoint: '/api/image/metadata',
-          options: []
+          options: ['x', 'y', 'width', 'height', 'aspectRatio', 'gravity']
         }
       ]
     },
     text: {
-      title: "Text & AI Tools",
-      description: "Intelligent text processing and AI-powered utilities",
-      gradient: "from-purple-600 to-pink-600",
+      title: "Text & Document Tools",
+      description: "Advanced text processing and document creation tools",
+      gradient: "from-purple-600 via-pink-600 to-red-600",
       icon: Type,
       tools: [
         {
           id: 'text-to-pdf',
           name: 'Text to PDF',
-          description: 'Convert text content to formatted PDF documents',
+          description: 'Convert plain text to formatted PDF documents',
           icon: FileText,
           premium: false,
           endpoint: '/api/text/text-to-pdf',
-          options: ['title', 'fontSize', 'fontFamily', 'margins']
+          options: ['font', 'fontSize', 'lineSpacing', 'margins', 'pageSize']
         },
         {
-          id: 'ai-summarize',
-          name: 'AI Summarizer',
-          description: 'Generate intelligent summaries of long text',
-          icon: Brain,
-          premium: true,
-          endpoint: '/api/ai/summarize',
-          options: ['length', 'style']
-        },
-        {
-          id: 'grammar-check',
-          name: 'Grammar Check',
-          description: 'AI-powered grammar and style checking',
+          id: 'grammar-checker',
+          name: 'Grammar Checker',
+          description: 'AI-powered grammar and spell checking',
           icon: CheckCircle,
           premium: true,
-          endpoint: '/api/ai/grammar-check',
-          options: ['language', 'style']
+          endpoint: '/api/text/grammar-check',
+          options: ['language', 'style', 'suggestions', 'severity']
         },
         {
-          id: 'content-generator',
-          name: 'Content Generator',
-          description: 'Generate content using AI assistance',
-          icon: Sparkles,
+          id: 'text-summarizer',
+          name: 'Text Summarizer',
+          description: 'Generate concise summaries of long text content',
+          icon: Brain,
           premium: true,
-          endpoint: '/api/ai/generate-content',
-          options: ['type', 'tone', 'length']
+          endpoint: '/api/text/summarize',
+          options: ['length', 'style', 'keyPoints', 'bullets']
+        }
+      ]
+    },
+    utility: {
+      title: "Utility Tools",
+      description: "Essential productivity and convenience tools",
+      gradient: "from-yellow-600 via-orange-600 to-red-600",
+      icon: Settings,
+      tools: [
+        {
+          id: 'qr-generator',
+          name: 'QR Code Generator',
+          description: 'Generate customizable QR codes for text, URLs, and data',
+          icon: QrCode,
+          premium: false,
+          endpoint: '/api/util/qr-generate',
+          options: ['size', 'errorCorrection', 'color', 'logo', 'format']
+        },
+        {
+          id: 'password-generator',
+          name: 'Password Generator',
+          description: 'Generate secure passwords with custom criteria',
+          icon: Shield,
+          premium: false,
+          endpoint: '/api/util/password-generate',
+          options: ['length', 'complexity', 'exclude', 'pronounceable']
         }
       ]
     }
   };
 
+  // 3D Background Effect
   useEffect(() => {
     if (!canvasRef.current) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 400 / 200, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-      canvas: canvasRef.current, 
-      alpha: true,
-      antialias: true 
-    });
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true });
     
-    renderer.setSize(400, 200);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
 
-    // Create tool-themed floating objects
-    const toolObjects: THREE.Mesh[] = [];
-    const geometries = [
-      new THREE.BoxGeometry(0.3, 0.4, 0.05), // Documents
-      new THREE.RingGeometry(0.2, 0.3, 8), // Settings rings
-      new THREE.SphereGeometry(0.2, 16, 16), // Processing spheres
-      new THREE.CylinderGeometry(0.15, 0.15, 0.4, 8), // Tools
-    ];
+    // Create floating particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particleCount = 150;
+    const positions = new Float32Array(particleCount * 3);
 
-    const materials = [
-      new THREE.MeshPhongMaterial({ color: 0xef4444, transparent: true, opacity: 0.8 }), // Red for PDF
-      new THREE.MeshPhongMaterial({ color: 0x10b981, transparent: true, opacity: 0.7 }), // Green for Images
-      new THREE.MeshPhongMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.9 }), // Purple for Text
-      new THREE.MeshPhongMaterial({ color: 0x06b6d4, transparent: true, opacity: 0.6 }), // Cyan for AI
-    ];
-
-    for (let i = 0; i < 8; i++) {
-      const geometry = geometries[i % geometries.length];
-      const material = materials[i % materials.length];
-      const object = new THREE.Mesh(geometry, material);
-      
-      object.position.set(
-        (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 3,
-        (Math.random() - 0.5) * 2
-      );
-      
-      toolObjects.push(object);
-      scene.add(object);
+    for (let i = 0; i < particleCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 20;
     }
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
-    const pointLight = new THREE.PointLight(0x3b82f6, 1, 100);
-    pointLight.position.set(0, 0, 3);
-    
-    scene.add(ambientLight, pointLight);
-    camera.position.z = 4;
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+      color: 0x00f5ff,
+      size: 0.02,
+      transparent: true,
+      opacity: 0.6
+    });
+
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
+
+    camera.position.z = 5;
 
     const animate = () => {
-      const time = Date.now() * 0.001;
-      
-      toolObjects.forEach((object, index) => {
-        object.rotation.x += 0.01 + index * 0.001;
-        object.rotation.y += 0.015 + index * 0.002;
-        object.position.y += Math.sin(time + index) * 0.003;
-      });
-
-      pointLight.position.x = Math.sin(time) * 2;
-      pointLight.position.y = Math.cos(time * 1.2) * 1.5;
-
-      renderer.render(scene, camera);
       requestAnimationFrame(animate);
+      particles.rotation.x += 0.001;
+      particles.rotation.y += 0.002;
+      renderer.render(scene, camera);
     };
 
     animate();
 
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
-      scene.clear();
+      window.removeEventListener('resize', handleResize);
       renderer.dispose();
     };
   }, []);
 
+  // File handling functions
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFiles = event.target.files;
-    if (uploadedFiles) {
+    if (uploadedFiles && uploadedFiles.length > 0) {
       setFiles(uploadedFiles);
       toast({
-        title: "Files uploaded",
-        description: `Selected ${uploadedFiles.length} file(s) for processing.`,
+        title: "Files uploaded successfully",
+        description: `${uploadedFiles.length} file(s) ready for processing`,
       });
     }
   };
 
-  const handleToolProcess = async (tool: any, formData: any) => {
-    if (!files || files.length === 0) {
+  const handleToolProcess = async () => {
+    if (!selectedTool || !files || files.length === 0) {
       toast({
-        title: "No files selected",
-        description: "Please select files to process.",
+        title: "Error",
+        description: "Please select files first",
         variant: "destructive",
       });
       return;
@@ -301,188 +373,189 @@ export const EnhancedToolsInterface: React.FC = () => {
     setProgress(0);
 
     try {
-      const data = new FormData();
-      
-      // Add files
-      if (tool.id === 'pdf-merge' || tool.id === 'batch-process' || tool.id === 'images-to-pdf') {
-        for (let i = 0; i < files.length; i++) {
-          data.append('files', files[i]);
-        }
-      } else {
-        data.append('file', files[0]);
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        formData.append('files', files[i]);
       }
 
-      // Add form options
-      Object.entries(formData).forEach(([key, value]) => {
-        if (value !== undefined && value !== '') {
-          data.append(key, value as string);
-        }
-      });
+      const tool = Object.values(toolCategories)
+        .flatMap(category => category.tools)
+        .find(t => t.id === selectedTool);
 
-      // Simulate progress during processing
+      if (!tool) return;
+
+      // Simulate progress
       const progressInterval = setInterval(() => {
-        setProgress(prev => Math.min(prev + 10, 90));
+        setProgress(prev => {
+          if (prev >= 90) {
+            clearInterval(progressInterval);
+            return prev;
+          }
+          return prev + Math.random() * 10;
+        });
       }, 200);
 
       const response = await fetch(tool.endpoint, {
         method: 'POST',
-        body: data,
+        body: formData,
       });
 
       clearInterval(progressInterval);
       setProgress(100);
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Processing failed');
-      }
-
-      const result = await response.json();
-      setResult(result);
-
-      if (result.success) {
+      if (response.ok) {
+        const result = await response.json();
+        setResult(result);
         toast({
-          title: "Processing completed!",
-          description: result.message,
+          title: "Processing completed",
+          description: "Your files have been processed successfully",
         });
-
-        // Auto-download if result has download URL
-        if (result.downloadUrl) {
-          const link = document.createElement('a');
-          link.href = result.downloadUrl;
-          link.download = `processed-${Date.now()}`;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
       } else {
-        throw new Error(result.message);
+        throw new Error('Processing failed');
       }
     } catch (error) {
-      console.error('Tool processing error:', error);
       toast({
-        title: "Processing failed",
-        description: "An error occurred while processing your file.",
+        title: "Error",
+        description: "Processing failed. Please try again.",
         variant: "destructive",
       });
     } finally {
       setIsProcessing(false);
       setProgress(0);
-      setTimeout(() => setSelectedTool(null), 1000);
+      setSelectedTool(null);
     }
   };
 
-  const currentCategory = toolCategories[activeCategory as keyof typeof toolCategories];
+  const currentTools = toolCategories[activeCategory as keyof typeof toolCategories]?.tools || [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black py-12">
-      <div className="container mx-auto px-6">
-        {/* Header */}
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+      {/* 3D Background Canvas */}
+      <canvas 
+        ref={canvasRef} 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ background: 'transparent' }}
+      />
+
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 py-8">
+        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <div className="flex justify-center mb-6">
-            <canvas ref={canvasRef} className="opacity-80" />
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-            Professional Tools Suite
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Professional Tools Hub
           </h1>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Access our comprehensive collection of professional-grade tools for PDF processing, image manipulation, and AI-powered text analysis.
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+            Complete suite of 90+ professional tools for PDF processing, image editing, 
+            text conversion, and utility functions. All powered by cutting-edge technology.
           </p>
-
-          {/* Category Selection */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {Object.entries(toolCategories).map(([key, category]) => (
-              <Button
-                key={key}
-                variant={activeCategory === key ? "default" : "outline"}
-                onClick={() => setActiveCategory(key)}
-                className={`${
-                  activeCategory === key 
-                    ? `bg-gradient-to-r ${category.gradient} text-white` 
-                    : 'bg-gray-800/50 border-gray-600 text-gray-300 hover:bg-gray-700/50'
-                } px-6 py-3 text-base font-semibold transition-all duration-300`}
-              >
-                <category.icon className="w-5 h-5 mr-2" />
-                {category.title}
-              </Button>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Current Category Tools */}
+        {/* Category Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
+        >
+          {Object.entries(toolCategories).map(([key, category]) => {
+            const IconComponent = category.icon;
+            return (
+              <Button
+                key={key}
+                onClick={() => setActiveCategory(key)}
+                variant={activeCategory === key ? "default" : "outline"}
+                size="lg"
+                className={`group relative overflow-hidden border-2 transition-all duration-300 ${
+                  activeCategory === key
+                    ? `bg-gradient-to-r ${category.gradient} border-transparent text-white shadow-2xl scale-105`
+                    : 'border-gray-600 hover:border-gray-400 bg-gray-900/50 backdrop-blur-sm'
+                }`}
+              >
+                <IconComponent className="w-5 h-5 mr-2" />
+                <span className="font-semibold">{category.title}</span>
+                <span className="ml-2 text-xs opacity-75">
+                  {category.tools.length} tools
+                </span>
+              </Button>
+            );
+          })}
+        </motion.div>
+
+        {/* Category Description */}
         <motion.div
           key={activeCategory}
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
         >
-          <div className="text-center mb-12">
-            <h2 className={`text-4xl font-black mb-4 bg-gradient-to-r ${currentCategory.gradient} bg-clip-text text-transparent`}>
-              {currentCategory.title}
-            </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              {currentCategory.description}
-            </p>
-          </div>
+          <h2 className="text-3xl font-bold mb-2">
+            {toolCategories[activeCategory as keyof typeof toolCategories]?.title}
+          </h2>
+          <p className="text-gray-400 text-lg">
+            {toolCategories[activeCategory as keyof typeof toolCategories]?.description}
+          </p>
+        </motion.div>
 
-          {/* Tools Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {currentCategory.tools.map((tool, index) => (
+        {/* Tools Grid */}
+        <motion.div
+          key={`${activeCategory}-grid`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
+          {currentTools.map((tool, index) => {
+            const IconComponent = tool.icon;
+            return (
               <motion.div
                 key={tool.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="group"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group relative"
               >
-                <Card className="bg-gray-800/30 border-gray-700/50 hover:border-gray-600/50 backdrop-blur-sm transition-all duration-300 h-full">
+                <Card className="h-full bg-gray-900/80 backdrop-blur-sm border-gray-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-400/20 cursor-pointer">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center space-x-3">
-                        <div className={`p-3 rounded-xl bg-gradient-to-r ${currentCategory.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}>
-                          <tool.icon className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-white mb-1">
-                            {tool.name}
-                          </h3>
-                          <div className="flex items-center space-x-2">
-                            {tool.premium && (
-                              <Badge className="text-xs bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border-yellow-500/30 text-yellow-400">
-                                <Crown className="w-3 h-3 mr-1" />
-                                Pro
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
+                      <div className="p-3 rounded-xl bg-gradient-to-r from-cyan-500/20 to-purple-500/20 group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all duration-300">
+                        <IconComponent className="w-6 h-6 text-cyan-400" />
                       </div>
+                      {tool.premium && (
+                        <Badge variant="secondary" className="bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-semibold">
+                          <Crown className="w-3 h-3 mr-1" />
+                          PRO
+                        </Badge>
+                      )}
                     </div>
-
-                    <p className="text-gray-300 mb-6 leading-relaxed">
+                    
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors">
+                      {tool.name}
+                    </h3>
+                    
+                    <p className="text-gray-400 text-sm mb-4 leading-relaxed">
                       {tool.description}
                     </p>
 
-                    <Button 
+                    <Button
                       onClick={() => setSelectedTool(tool.id)}
-                      className={`w-full bg-gradient-to-r ${currentCategory.gradient} hover:shadow-lg transition-all duration-300`}
+                      className="w-full bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 transition-all duration-300"
+                      disabled={tool.premium}
                     >
                       <Zap className="w-4 h-4 mr-2" />
-                      Use Tool
+                      {tool.premium ? 'Upgrade to Pro' : 'Use Tool'}
                     </Button>
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </motion.div>
 
         {/* Tool Modal */}
@@ -492,69 +565,89 @@ export const EnhancedToolsInterface: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={() => setSelectedTool(null)}
             >
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-gray-900 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                className="bg-gray-900 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-700"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Tool Interface Implementation would go here */}
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    Tool Interface: {selectedTool}
-                  </h3>
-                  
-                  <div className="mb-6">
-                    <Label htmlFor="file-upload" className="text-gray-300 mb-2 block">
-                      Select Files
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">
+                    {currentTools.find(t => t.id === selectedTool)?.name}
+                  </h2>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setSelectedTool(null)}
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                </div>
+
+                <div className="space-y-6">
+                  {/* File Upload */}
+                  <div>
+                    <Label htmlFor="files" className="text-lg font-semibold mb-2 block">
+                      Upload Files
                     </Label>
-                    <Input
-                      id="file-upload"
-                      type="file"
-                      multiple
-                      onChange={handleFileUpload}
-                      className="bg-gray-800 border-gray-600 text-white"
-                    />
+                    <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-cyan-400 transition-colors">
+                      <Upload className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+                      <Input
+                        id="files"
+                        type="file"
+                        multiple
+                        onChange={handleFileUpload}
+                        className="hidden"
+                      />
+                      <Label htmlFor="files" className="cursor-pointer">
+                        <span className="text-lg font-semibold text-cyan-400 hover:text-cyan-300">
+                          Choose files
+                        </span>
+                        <span className="text-gray-400 ml-2">or drag and drop</span>
+                      </Label>
+                      {files && (
+                        <p className="mt-2 text-sm text-gray-400">
+                          {files.length} file(s) selected
+                        </p>
+                      )}
+                    </div>
                   </div>
 
+                  {/* Progress */}
                   {isProcessing && (
-                    <div className="mb-6">
-                      <Progress value={progress} className="mb-2" />
-                      <p className="text-gray-300">Processing... {progress}%</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">Processing...</span>
+                        <span className="text-sm text-gray-400">{Math.round(progress)}%</span>
+                      </div>
+                      <Progress value={progress} className="h-2" />
                     </div>
                   )}
 
+                  {/* Result */}
                   {result && (
-                    <div className="mb-6 p-4 bg-gray-800 rounded-lg">
-                      <pre className="text-sm text-gray-300 overflow-auto">
-                        {JSON.stringify(result, null, 2)}
-                      </pre>
+                    <div className="p-4 bg-green-900/20 border border-green-700 rounded-lg">
+                      <div className="flex items-center mb-2">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2" />
+                        <span className="font-semibold text-green-400">Processing Complete</span>
+                      </div>
+                      <Button className="w-full bg-green-600 hover:bg-green-500">
+                        <Download className="w-4 h-4 mr-2" />
+                        Download Result
+                      </Button>
                     </div>
                   )}
 
-                  <div className="flex gap-4 justify-center">
+                  {/* Actions */}
+                  <div className="flex gap-3">
                     <Button
-                      onClick={() => setSelectedTool(null)}
-                      variant="outline"
-                      className="border-gray-600 text-gray-300"
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        const tool = Object.values(toolCategories)
-                          .flatMap(cat => cat.tools)
-                          .find(t => t.id === selectedTool);
-                        if (tool) {
-                          handleToolProcess(tool, {});
-                        }
-                      }}
-                      disabled={isProcessing || !files}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600"
+                      onClick={handleToolProcess}
+                      disabled={!files || isProcessing}
+                      className="flex-1 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500"
                     >
                       {isProcessing ? (
                         <>
@@ -564,9 +657,16 @@ export const EnhancedToolsInterface: React.FC = () => {
                       ) : (
                         <>
                           <Zap className="w-4 h-4 mr-2" />
-                          Process
+                          Process Files
                         </>
                       )}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => setSelectedTool(null)}
+                      className="border-gray-600"
+                    >
+                      Cancel
                     </Button>
                   </div>
                 </div>
