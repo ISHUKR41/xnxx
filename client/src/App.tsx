@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Router, Route, Switch } from "wouter";
 import { queryClient } from "@/lib/queryClient";
-import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { EnhancedLoadingScreen } from "@/components/Enhanced/LoadingScreen";
 import { useState, useEffect } from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -30,10 +30,7 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <LoadingScreen 
-            isLoading={isLoading}
-            onComplete={() => setIsLoading(false)}
-          />
+          {isLoading && <EnhancedLoadingScreen />}
           {!isLoading && (
             <Router>
               <Switch>

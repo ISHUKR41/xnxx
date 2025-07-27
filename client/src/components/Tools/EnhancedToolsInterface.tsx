@@ -42,7 +42,7 @@ export const EnhancedToolsInterface: React.FC = () => {
           description: 'Combine multiple PDF files into one document',
           icon: Combine,
           premium: false,
-          endpoint: '/api/pdf/merge-enhanced',
+          endpoint: '/api/pdf/merge',
           options: ['addPageNumbers', 'addBookmarks', 'title']
         },
         {
@@ -51,7 +51,7 @@ export const EnhancedToolsInterface: React.FC = () => {
           description: 'Split PDF into separate pages or custom ranges',
           icon: Scissors,
           premium: false,
-          endpoint: '/api/pdf/split-advanced',
+          endpoint: '/api/pdf/split',
           options: ['splitType', 'ranges', 'pageSize']
         },
         {
@@ -104,7 +104,7 @@ export const EnhancedToolsInterface: React.FC = () => {
           description: 'Resize images with advanced options and quality control',
           icon: Maximize,
           premium: false,
-          endpoint: '/api/image/resize-advanced',
+          endpoint: '/api/image/resize',
           options: ['width', 'height', 'maintainAspectRatio', 'resizeMode', 'background', 'format']
         },
         {
@@ -113,7 +113,7 @@ export const EnhancedToolsInterface: React.FC = () => {
           description: 'Reduce image file size with smart compression',
           icon: Archive,
           premium: false,
-          endpoint: '/api/image/compress-advanced',
+          endpoint: '/api/image/compress',
           options: ['quality', 'compressionLevel', 'preserveMetadata', 'outputFormat']
         },
         {
@@ -319,7 +319,7 @@ export const EnhancedToolsInterface: React.FC = () => {
         }
       });
 
-      // Simulate progress
+      // Simulate progress during processing
       const progressInterval = setInterval(() => {
         setProgress(prev => Math.min(prev + 10, 90));
       }, 200);
@@ -332,33 +332,31 @@ export const EnhancedToolsInterface: React.FC = () => {
       clearInterval(progressInterval);
       setProgress(100);
 
-      if (response.ok) {
-        if (tool.id === 'image-metadata') {
-          const result = await response.json();
-          setResult(result);
-          toast({
-            title: "Metadata extracted",
-            description: "Image metadata has been successfully extracted.",
-          });
-        } else {
-          // Handle file download
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `processed-${Date.now()}.${tool.id.includes('pdf') ? 'pdf' : 'zip'}`;
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-          
-          toast({
-            title: "Processing complete",
-            description: "Your file has been processed and downloaded.",
-          });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Processing failed');
+      }
+
+      const result = await response.json();
+      setResult(result);
+
+      if (result.success) {
+        toast({
+          title: "Processing completed!",
+          description: result.message,
+        });
+
+        // Auto-download if result has download URL
+        if (result.downloadUrl) {
+          const link = document.createElement('a');
+          link.href = result.downloadUrl;
+          link.download = `processed-${Date.now()}`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         }
       } else {
-        throw new Error(`Processing failed: ${response.statusText}`);
+        throw new Error(result.message);
       }
     } catch (error) {
       console.error('Tool processing error:', error);
