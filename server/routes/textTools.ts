@@ -8,7 +8,7 @@ const router = express.Router();
 const upload = multer({ dest: 'temp/uploads/' });
 
 // Convert text to PDF
-router.post('/text-to-pdf', async (req, res) => {
+router.post('/to-pdf', async (req, res) => {
   try {
     const { text, fontSize = 12, fontFamily = 'Helvetica' } = req.body;
     

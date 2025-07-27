@@ -13,6 +13,9 @@ import { PricingSection } from './PricingSection';
 import { FAQSection } from './FAQSection';
 import { FooterSection } from './FooterSection';
 import { StatsCounter } from './StatsCounter';
+import { DetailedFeaturesSection } from './DetailedFeaturesSection';
+import { AdvancedStatsSection } from './AdvancedStatsSection';
+import { ComprehensiveToolsSection } from './ComprehensiveToolsSection';
 
 export const LandingPage: React.FC = () => {
   return (
@@ -25,6 +28,15 @@ export const LandingPage: React.FC = () => {
       
       {/* Stats Counter */}
       <StatsCounter />
+      
+      {/* Advanced Statistics Section */}
+      <AdvancedStatsSection />
+      
+      {/* Detailed Features Section */}
+      <DetailedFeaturesSection />
+      
+      {/* Comprehensive Tools Section */}
+      <ComprehensiveToolsSection />
       
       {/* Key Features Grid */}
       <FeaturesGrid />
