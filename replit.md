@@ -6,7 +6,12 @@ StudentHub.com is a comprehensive educational platform that provides students wi
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+- Preferred communication style: Simple, everyday language.
+- User requirement: Enhance home page with maximum detailed content and logic
+- User requirement: Make all tools in tools section fully working with custom backend
+- User requirement: Enhance about page with more detailed content and animations
+- User requirement: Website should be fully responsive for all displays
+- User requirement: No errors should appear when running the website
 
 ## System Architecture
 

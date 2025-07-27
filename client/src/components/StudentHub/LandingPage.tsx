@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Header } from './Header';
-import { HeroSection } from './HeroSection';
+import { EnhancedHeroSection } from './EnhancedHeroSection';
 import { FeaturesGrid } from './FeaturesGrid';
 import { CategoryCarousel } from './CategoryCarousel';
 import { HowItWorks } from './HowItWorks';
@@ -20,8 +20,8 @@ export const LandingPage: React.FC = () => {
       {/* Header */}
       <Header />
       
-      {/* Hero Section with 3D Globe */}
-      <HeroSection />
+      {/* Enhanced Hero Section with 3D Elements */}
+      <EnhancedHeroSection />
       
       {/* Stats Counter */}
       <StatsCounter />

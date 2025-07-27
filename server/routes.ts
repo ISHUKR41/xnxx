@@ -2,6 +2,8 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import imageToolsRouter from "./routes/imageTools";
+import pdfToolsRouter from "./routes/pdfTools";
+import textToolsRouter from "./routes/textTools";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
@@ -10,8 +12,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
 
-  // Register image tools routes
+  // Register tool routes
   app.use("/api/image-tools", imageToolsRouter);
+  app.use("/api/pdf-tools", pdfToolsRouter);
+  app.use("/api/text-tools", textToolsRouter);
 
   const httpServer = createServer(app);
 
