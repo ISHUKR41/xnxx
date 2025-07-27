@@ -40,8 +40,8 @@ export const DetailedFeaturesSection: React.FC = () => {
         "Year-wise Sorting",
         "Instant Download"
       ],
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200"
+      bgColor: "bg-gray-800",
+      borderColor: "border-blue-600"
     },
     {
       icon: <Image className="w-12 h-12 text-green-600" />,
@@ -54,8 +54,8 @@ export const DetailedFeaturesSection: React.FC = () => {
         "Batch Processing",
         "High-Quality Output"
       ],
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200"
+      bgColor: "bg-gray-800",
+      borderColor: "border-green-600"
     },
     {
       icon: <Brain className="w-12 h-12 text-purple-600" />,
@@ -68,8 +68,8 @@ export const DetailedFeaturesSection: React.FC = () => {
         "Personalized Learning",
         "24/7 Availability"
       ],
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200"
+      bgColor: "bg-gray-800",
+      borderColor: "border-purple-600"
     }
   ];
 
@@ -117,25 +117,25 @@ export const DetailedFeaturesSection: React.FC = () => {
       category: "PDF Tools",
       tools: ["Merge PDF", "Split PDF", "Compress PDF", "Protect PDF", "PDF to Word", "PDF to PowerPoint"],
       color: "text-red-600",
-      bgColor: "bg-red-50"
+      bgColor: "bg-gray-800"
     },
     {
       category: "Image Tools", 
       tools: ["Resize Image", "Crop Image", "Compress Image", "Convert Format", "Batch Process", "Quality Enhance"],
       color: "text-blue-600",
-      bgColor: "bg-blue-50"
+      bgColor: "bg-gray-800"
     },
     {
       category: "Text Tools",
       tools: ["Text to PDF", "Word Counter", "Grammar Check", "Format Text", "Extract Text", "Translate"],
       color: "text-green-600",
-      bgColor: "bg-green-50"
+      bgColor: "bg-gray-800"
     },
     {
       category: "Study Tools",
       tools: ["Notes Maker", "Quiz Generator", "Mind Maps", "Study Planner", "Progress Tracker", "Flashcards"],
       color: "text-purple-600", 
-      bgColor: "bg-purple-50"
+      bgColor: "bg-gray-800"
     }
   ];
 
@@ -163,17 +163,17 @@ export const DetailedFeaturesSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section className="py-20 bg-black">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <Badge className="mb-4 bg-blue-100 text-blue-800 px-4 py-2">
+          <Badge className="mb-4 bg-gray-800 text-blue-400 px-4 py-2">
             Comprehensive Platform Features
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Everything You Need for Academic Success
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Discover a complete ecosystem of tools, resources, and support designed specifically 
             for students who want to excel in their academic journey.
           </p>
@@ -184,15 +184,15 @@ export const DetailedFeaturesSection: React.FC = () => {
           {mainFeatures.map((feature, index) => (
             <Card key={index} className={`${feature.bgColor} ${feature.borderColor} border-2 hover:shadow-xl transition-all duration-300 group`}>
               <CardContent className="p-8">
-                <div className="flex items-center justify-center w-20 h-20 bg-white rounded-full shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center justify-center w-20 h-20 bg-gray-700 rounded-full shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{feature.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                <h3 className="text-2xl font-bold mb-4 text-white">{feature.title}</h3>
+                <p className="text-gray-200 mb-6 leading-relaxed">{feature.description}</p>
                 <ul className="space-y-2">
                   {feature.details.map((detail, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                    <li key={idx} className="flex items-center text-sm text-gray-200">
+                      <CheckCircle className="w-4 h-4 text-green-400 mr-2 flex-shrink-0" />
                       {detail}
                     </li>
                   ))}
@@ -208,20 +208,20 @@ export const DetailedFeaturesSection: React.FC = () => {
 
         {/* Additional Features Grid */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Why Students Choose StudentHub.com
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {additionalFeatures.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 group border-2 hover:border-primary/20">
+              <Card key={index} className="bg-gray-800 hover:shadow-lg transition-all duration-300 group border-2 border-gray-600 hover:border-primary/20">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                       {feature.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-lg mb-2 text-gray-800">{feature.title}</h4>
-                      <p className="text-gray-600 text-sm mb-2 leading-relaxed">{feature.description}</p>
+                      <h4 className="font-semibold text-lg mb-2 text-white">{feature.title}</h4>
+                      <p className="text-gray-200 text-sm mb-2 leading-relaxed">{feature.description}</p>
                       <Badge variant="secondary" className="text-xs">
                         {feature.stat}
                       </Badge>
@@ -235,7 +235,7 @@ export const DetailedFeaturesSection: React.FC = () => {
 
         {/* Tools Categories */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Professional Tools at Your Fingertips
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -247,7 +247,7 @@ export const DetailedFeaturesSection: React.FC = () => {
                   </h4>
                   <ul className="space-y-2">
                     {category.tools.map((tool, idx) => (
-                      <li key={idx} className="text-sm text-gray-700 flex items-center">
+                      <li key={idx} className="text-sm text-gray-200 flex items-center">
                         <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></div>
                         {tool}
                       </li>
@@ -265,18 +265,18 @@ export const DetailedFeaturesSection: React.FC = () => {
 
         {/* Benefits Section */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Transform Your Academic Journey
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 group">
+              <Card key={index} className="bg-gray-800 text-center hover:shadow-lg transition-all duration-300 group border-2 border-gray-600">
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-full mx-auto mb-4 group-hover:bg-primary/10 transition-colors">
                     {benefit.icon}
                   </div>
-                  <h4 className="font-bold text-lg mb-2 text-gray-800">{benefit.title}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
+                  <h4 className="font-bold text-lg mb-2 text-white">{benefit.title}</h4>
+                  <p className="text-gray-200 text-sm leading-relaxed">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}

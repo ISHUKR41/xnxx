@@ -47,8 +47,8 @@ export const ComprehensiveToolsSection: React.FC = () => {
       description: "Professional PDF processing and manipulation tools",
       icon: <FileText className="w-8 h-8 text-red-600" />,
       color: "from-red-500 to-pink-500",
-      bgColor: "bg-red-50",
-      borderColor: "border-red-200",
+      bgColor: "bg-gray-800",
+      borderColor: "border-red-600",
       tools: [
         {
           id: "merge-pdf",
@@ -105,8 +105,8 @@ export const ComprehensiveToolsSection: React.FC = () => {
       description: "Advanced image editing and optimization utilities",
       icon: <Image className="w-8 h-8 text-blue-600" />,
       color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
+      bgColor: "bg-gray-800",
+      borderColor: "border-blue-600",
       tools: [
         {
           id: "resize-image",
@@ -147,8 +147,8 @@ export const ComprehensiveToolsSection: React.FC = () => {
       description: "Text processing and document creation utilities",
       icon: <Type className="w-8 h-8 text-green-600" />,
       color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200",
+      bgColor: "bg-gray-800",
+      borderColor: "border-green-600",
       tools: [
         {
           id: "text-to-pdf",
@@ -181,8 +181,8 @@ export const ComprehensiveToolsSection: React.FC = () => {
       description: "Educational tools to enhance learning experience",
       icon: <BookOpen className="w-8 h-8 text-purple-600" />,
       color: "from-purple-500 to-violet-500",
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200",
+      bgColor: "bg-gray-800",
+      borderColor: "border-purple-600",
       tools: [
         {
           id: "note-maker",
