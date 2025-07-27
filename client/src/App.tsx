@@ -11,21 +11,23 @@ import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Router>
-        <Switch>
-          <Route path="/" component={Index} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/tools" component={Tools} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <div className="dark">
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <Router>
+          <Switch>
+            <Route path="/" component={Index} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/tools" component={Tools} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </div>
 );
 
 export default App;

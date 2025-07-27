@@ -13,6 +13,8 @@ import CompressImageTool from '../ImageTools/CompressImageTool';
 import ConvertImageTool from '../ImageTools/ConvertImageTool';
 import { TextToPDFTool } from './TextTools/TextToPDFTool';
 import { ProtectPDFTool } from './PDFTools/ProtectPDFTool';
+import NotepadTool from './TextTools/NotepadTool';
+import TextSummarizerTool from './TextTools/TextSummarizerTool';
 
 interface ToolModalProps {
   isOpen: boolean;
@@ -46,6 +48,10 @@ export const ToolModal: React.FC<ToolModalProps> = ({ isOpen, onClose, toolId, t
         return <ConvertImageTool />;
       case 'text-to-pdf':
         return <TextToPDFTool />;
+      case 'notepad':
+        return <NotepadTool />;
+      case 'text-summary':
+        return <TextSummarizerTool />;
       default:
         return (
           <div className="text-center py-12">

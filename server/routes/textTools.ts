@@ -7,50 +7,48 @@ import path from 'path';
 const router = express.Router();
 const upload = multer({ dest: 'temp/uploads/' });
 
-// Convert text to PDF
-router.post('/to-pdf', async (req, res) => {
+// Text to PDF conversion
+router.post('/text-to-pdf', express.json(), async (req, res) => {
   try {
-    const { text, fontSize = 12, fontFamily = 'Helvetica' } = req.body;
+    const { text, fontSize = 12, fontFamily = 'Helvetica', margins = 50 } = req.body;
     
-    if (!text) {
+    if (!text || text.trim().length === 0) {
       return res.status(400).json({ error: 'Text content is required' });
     }
 
+    // Create PDF document
     const pdfDoc = await PDFDocument.create();
     
-    // Select font
+    // Set font
     let font;
-    switch (fontFamily.toLowerCase()) {
-      case 'times':
+    switch (fontFamily) {
+      case 'Times':
         font = await pdfDoc.embedFont(StandardFonts.TimesRoman);
         break;
-      case 'courier':
+      case 'Courier':
         font = await pdfDoc.embedFont(StandardFonts.Courier);
         break;
       default:
         font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     }
+
+    // Calculate text dimensions and pages needed
+    const pageWidth = 595.28; // A4 width in points
+    const pageHeight = 841.89; // A4 height in points
+    const contentWidth = pageWidth - (margins * 2);
+    const contentHeight = pageHeight - (margins * 2);
     
-    const pageWidth = 595; // A4 width in points
-    const pageHeight = 842; // A4 height in points
-    const margin = 50;
-    const maxWidth = pageWidth - (margin * 2);
-    const lineHeight = fontSize * 1.2;
-    
-    let page = pdfDoc.addPage([pageWidth, pageHeight]);
-    let currentY = pageHeight - margin;
-    
-    // Split text into lines and handle page breaks
     const lines = text.split('\n');
+    const lineHeight = fontSize * 1.2;
+    const linesPerPage = Math.floor(contentHeight / lineHeight);
+    
+    // Process text into pages
+    let currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+    let currentY = pageHeight - margins;
+    let lineCount = 0;
     
     for (const line of lines) {
-      if (currentY < margin + lineHeight) {
-        // Add new page
-        page = pdfDoc.addPage([pageWidth, pageHeight]);
-        currentY = pageHeight - margin;
-      }
-      
-      // Handle long lines by wrapping
+      // Split long lines to fit page width
       const words = line.split(' ');
       let currentLine = '';
       
@@ -58,41 +56,54 @@ router.post('/to-pdf', async (req, res) => {
         const testLine = currentLine + (currentLine ? ' ' : '') + word;
         const textWidth = font.widthOfTextAtSize(testLine, fontSize);
         
-        if (textWidth > maxWidth && currentLine) {
-          // Draw current line and start new one
-          page.drawText(currentLine, {
-            x: margin,
-            y: currentY,
-            size: fontSize,
-            font: font,
-            color: rgb(0, 0, 0),
-          });
-          
-          currentY -= lineHeight;
-          if (currentY < margin + lineHeight) {
-            page = pdfDoc.addPage([pageWidth, pageHeight]);
-            currentY = pageHeight - margin;
-          }
-          
-          currentLine = word;
-        } else {
+        if (textWidth <= contentWidth) {
           currentLine = testLine;
+        } else {
+          // Draw current line and start new one
+          if (currentLine) {
+            currentPage.drawText(currentLine, {
+              x: margins,
+              y: currentY,
+              size: fontSize,
+              font: font,
+              color: rgb(0, 0, 0),
+            });
+            currentY -= lineHeight;
+            lineCount++;
+            
+            // Check if we need a new page
+            if (lineCount >= linesPerPage) {
+              currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+              currentY = pageHeight - margins;
+              lineCount = 0;
+            }
+          }
+          currentLine = word;
         }
       }
       
-      // Draw remaining text
+      // Draw remaining text in current line
       if (currentLine) {
-        page.drawText(currentLine, {
-          x: margin,
+        currentPage.drawText(currentLine, {
+          x: margins,
           y: currentY,
           size: fontSize,
           font: font,
           color: rgb(0, 0, 0),
         });
         currentY -= lineHeight;
+        lineCount++;
+        
+        // Check if we need a new page
+        if (lineCount >= linesPerPage) {
+          currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+          currentY = pageHeight - margins;
+          lineCount = 0;
+        }
       }
     }
-    
+
+    // Save PDF
     const pdfBytes = await pdfDoc.save();
     const outputPath = path.join('temp/processed', `text_to_pdf_${Date.now()}.pdf`);
     
@@ -102,8 +113,9 @@ router.post('/to-pdf', async (req, res) => {
     res.json({ 
       success: true, 
       message: 'Text converted to PDF successfully',
-      pages: pdfDoc.getPageCount(),
-      downloadUrl: `/api/text-tools/download/${path.basename(outputPath)}`
+      downloadUrl: `/api/text-tools/download/${path.basename(outputPath)}`,
+      pageCount: pdfDoc.getPageCount(),
+      characterCount: text.length
     });
 
   } catch (error) {
@@ -112,142 +124,88 @@ router.post('/to-pdf', async (req, res) => {
   }
 });
 
-// Text summarizer (basic implementation)
-router.post('/summarize', async (req, res) => {
+// Note taking endpoint
+router.post('/save-note', express.json(), async (req, res) => {
   try {
-    const { text, maxSentences = 3 } = req.body;
+    const { title, content, format = 'txt' } = req.body;
     
-    if (!text) {
-      return res.status(400).json({ error: 'Text content is required' });
+    if (!content || content.trim().length === 0) {
+      return res.status(400).json({ error: 'Note content is required' });
     }
 
-    // Basic text summarization using sentence scoring
-    const sentences = text.split(/[.!?]+/).filter((s: string) => s.trim().length > 0);
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const filename = `${title || 'note'}_${timestamp}.${format}`;
+    const outputPath = path.join('temp/processed', filename);
     
-    if (sentences.length <= maxSentences) {
-      return res.json({
-        success: true,
-        originalLength: text.length,
-        summaryLength: text.length,
-        summary: text.trim(),
-        compressionRatio: 0
-      });
-    }
-
-    // Simple word frequency scoring
-    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-    const wordFreq: { [key: string]: number } = {};
+    await fs.mkdir(path.dirname(outputPath), { recursive: true });
     
-    words.forEach((word: string) => {
-      if (word.length > 3) { // Ignore short words
-        wordFreq[word] = (wordFreq[word] || 0) + 1;
-      }
-    });
-
-    // Score sentences based on word frequency
-    const scoredSentences = sentences.map((sentence: string, index: number) => {
-      const sentenceWords = sentence.toLowerCase().match(/\b\w+\b/g) || [];
-      const score = sentenceWords.reduce((sum: number, word: string) => {
-        return sum + (wordFreq[word] || 0);
-      }, 0) / sentenceWords.length;
+    if (format === 'txt') {
+      await fs.writeFile(outputPath, content, 'utf8');
+    } else if (format === 'pdf') {
+      // Convert to PDF using same logic as text-to-pdf
+      const pdfDoc = await PDFDocument.create();
+      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      const page = pdfDoc.addPage();
+      const { width, height } = page.getSize();
       
-      return {
-        sentence: sentence.trim(),
-        score,
-        index
-      };
-    });
+      const lines = content.split('\n');
+      let y = height - 50;
+      
+      for (const line of lines) {
+        if (y < 50) {
+          page.drawText(line, { x: 50, y, size: 12, font, color: rgb(0, 0, 0) });
+          y -= 15;
+        }
+      }
+      
+      const pdfBytes = await pdfDoc.save();
+      await fs.writeFile(outputPath, pdfBytes);
+    }
 
-    // Get top sentences
-    const topSentences = scoredSentences
-      .sort((a: any, b: any) => b.score - a.score)
-      .slice(0, maxSentences)
-      .sort((a: any, b: any) => a.index - b.index)
-      .map((item: any) => item.sentence);
-
-    const summary = topSentences.join('. ') + '.';
-    const compressionRatio = Math.round(((text.length - summary.length) / text.length) * 100);
-
-    res.json({
-      success: true,
-      originalLength: text.length,
-      summaryLength: summary.length,
-      summary,
-      compressionRatio
+    res.json({ 
+      success: true, 
+      message: 'Note saved successfully',
+      downloadUrl: `/api/text-tools/download/${filename}`,
+      filename
     });
 
   } catch (error) {
-    console.error('Text summarize error:', error);
-    res.status(500).json({ error: 'Failed to summarize text' });
+    console.error('Save note error:', error);
+    res.status(500).json({ error: 'Failed to save note' });
   }
 });
 
-// Grammar checker (basic implementation)
-router.post('/grammar-check', async (req, res) => {
+// Text summarization endpoint (basic implementation)
+router.post('/summarize', express.json(), async (req, res) => {
   try {
-    const { text } = req.body;
+    const { text, maxLength = 200 } = req.body;
     
-    if (!text) {
+    if (!text || text.trim().length === 0) {
       return res.status(400).json({ error: 'Text content is required' });
     }
 
-    // Basic grammar rules
-    const issues = [];
+    // Basic text summarization (extract first few sentences)
+    const sentences = text.match(/[^\.!?]+[\.!?]+/g) || [];
+    const targetSentences = Math.max(1, Math.floor(sentences.length * 0.3));
     
-    // Check for double spaces
-    const doubleSpaces = text.match(/  +/g);
-    if (doubleSpaces) {
-      issues.push({
-        type: 'spacing',
-        message: 'Multiple consecutive spaces found',
-        count: doubleSpaces.length,
-        suggestion: 'Use single spaces between words'
-      });
+    let summary = sentences.slice(0, targetSentences).join(' ');
+    
+    // Truncate if still too long
+    if (summary.length > maxLength) {
+      summary = summary.substring(0, maxLength - 3) + '...';
     }
-    
-    // Check for missing capital after periods
-    const missingCaps = text.match(/\. [a-z]/g);
-    if (missingCaps) {
-      issues.push({
-        type: 'capitalization',
-        message: 'Missing capitalization after periods',
-        count: missingCaps.length,
-        suggestion: 'Capitalize the first letter after sentences'
-      });
-    }
-    
-    // Check for common typos
-    const commonTypos = {
-      'teh': 'the',
-      'recieve': 'receive',
-      'seperate': 'separate',
-      'occured': 'occurred',
-      'neccessary': 'necessary'
-    };
-    
-    Object.entries(commonTypos).forEach(([typo, correction]) => {
-      const regex = new RegExp(`\\b${typo}\\b`, 'gi');
-      const matches = text.match(regex);
-      if (matches) {
-        issues.push({
-          type: 'spelling',
-          message: `Possible typo: "${typo}" should be "${correction}"`,
-          count: matches.length,
-          suggestion: `Replace "${typo}" with "${correction}"`
-        });
-      }
-    });
 
-    res.json({
-      success: true,
-      issuesFound: issues.length,
-      issues,
-      score: Math.max(0, 100 - (issues.length * 10))
+    res.json({ 
+      success: true, 
+      summary,
+      originalLength: text.length,
+      summaryLength: summary.length,
+      compressionRatio: ((1 - summary.length / text.length) * 100).toFixed(1)
     });
 
   } catch (error) {
-    console.error('Grammar check error:', error);
-    res.status(500).json({ error: 'Failed to check grammar' });
+    console.error('Text summarization error:', error);
+    res.status(500).json({ error: 'Failed to summarize text' });
   }
 });
 
@@ -260,21 +218,22 @@ router.get('/download/:filename', async (req, res) => {
     // Check if file exists
     await fs.access(filePath);
     
-    res.download(filePath, (err) => {
-      if (err) {
-        console.error('Download error:', err);
-        res.status(404).json({ error: 'File not found' });
-      } else {
-        // Clean up file after download
-        setTimeout(async () => {
-          try {
-            await fs.unlink(filePath);
-          } catch (cleanupError) {
-            console.error('File cleanup error:', cleanupError);
-          }
-        }, 60000); // Delete after 1 minute
+    // Set appropriate headers
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.setHeader('Content-Type', 'application/octet-stream');
+    
+    // Stream file
+    const fileBuffer = await fs.readFile(filePath);
+    res.send(fileBuffer);
+    
+    // Clean up file after download
+    setTimeout(async () => {
+      try {
+        await fs.unlink(filePath);
+      } catch (error) {
+        console.error('Error deleting file:', error);
       }
-    });
+    }, 60000); // Delete after 1 minute
     
   } catch (error) {
     console.error('Download error:', error);

@@ -1,5 +1,5 @@
-import { AboutPage } from "@/components/StudentHub/AboutPage";
+import { Enhanced3DAboutPage } from "@/components/StudentHub/Enhanced3DAboutPage";
 
 export default function About() {
-  return <AboutPage />;
+  return <Enhanced3DAboutPage />;
 }
