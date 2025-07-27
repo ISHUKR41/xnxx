@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Router, Route, Switch } from "wouter";
 import { queryClient } from "@/lib/queryClient";
-import { EnhancedLoadingScreen } from "@/components/Enhanced/LoadingScreen";
+import { Enhanced3DLoadingScreen } from "@/components/Enhanced/Enhanced3DLoadingScreen";
 import { useState, useEffect } from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -19,7 +19,7 @@ const App = () => {
     // Simulate initial loading time
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -30,7 +30,7 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          {isLoading && <EnhancedLoadingScreen />}
+          {isLoading && <Enhanced3DLoadingScreen />}
           {!isLoading && (
             <Router>
               <Switch>

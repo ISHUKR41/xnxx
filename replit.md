@@ -14,12 +14,16 @@ StudentHub.com is a comprehensive educational platform that provides students wi
 - User requirement: No errors should appear when running the website 🔄 IN PROGRESS
 - Date: July 27, 2025 - Currently implementing: Comprehensive improvements with enhanced animations, 3D effects, fully working backend tools, improved homepage detailing, enhanced about page with navbar
 - Current task: Building fully functional backend tools with real processing logic, implementing user's comprehensive enhancement requests with maximum detailing and animations
-- User preference: Dark theme throughout entire website with high visibility text
+- User preference: Dark theme throughout entire website with high visibility text (CRITICAL - never change to white theme)
 - User preference: Animated, attractive, modern sections with 3D elements and eye-catching design
-- User preference: Maximum detailed content and logic on homepage
-- User preference: All tools must be fully working with complete backend functionality
-- User preference: Enhanced about page with maximum detailing and animations
-- User preference: 3D animated logo and favicon
+- User preference: Maximum detailed content and logic on homepage with more animations and 3D effects
+- User preference: All tools must be fully working with complete backend functionality - NO DUMMY CODE
+- User preference: Enhanced about page with maximum detailing, animations, and navbar integration
+- User preference: 3D animated logo and favicon 
+- User preference: Professional animated loading screen
+- User preference: Contact page with enhanced detailing and Google form integration
+- User preference: Backend logic must be real and working - use proper libraries like Sharp, pdf-lib, etc.
+- User preference: Every tool in tools section must work perfectly with proper backend code
 
 ## System Architecture
 
