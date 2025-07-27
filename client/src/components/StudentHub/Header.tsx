@@ -32,9 +32,10 @@ export const Header: React.FC = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-lg shadow-lg py-1 sm:py-2' 
+          ? 'backdrop-blur-lg shadow-lg py-1 sm:py-2' 
           : 'bg-transparent py-2 sm:py-4'
       }`}
+      style={{ backgroundColor: isScrolled ? 'rgba(15, 23, 42, 0.95)' : 'transparent' }}
     >
       <nav className="container mx-auto px-3 sm:px-4 lg:px-6 flex items-center justify-between">
         {/* Enhanced 3D Animated Logo */}
@@ -42,7 +43,7 @@ export const Header: React.FC = () => {
           <AnimatedLogo3D size="md" className="hidden sm:block" />
           <AnimatedLogo3D size="sm" className="sm:hidden" />
           <div className="relative">
-            <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold gradient-text group-hover:animate-pulse">
+            <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold gradient-text group-hover:animate-pulse text-white">
               <span className="hidden sm:inline">📚 STUDENTHUB.COM</span>
               <span className="sm:hidden">📚 STUDENTHUB</span>
             </span>
@@ -56,7 +57,7 @@ export const Header: React.FC = () => {
             <Link
               key={item.label}
               to={item.href}
-              className="text-foreground-secondary hover:text-primary transition-colors duration-300 font-medium text-sm xl:text-base py-2 px-1 touch-target hover:scale-105 transform"
+              className="text-slate-200 hover:text-blue-400 transition-colors duration-300 font-medium text-sm xl:text-base py-2 px-1 touch-target hover:scale-105 transform"
               style={{ willChange: 'transform, color' }}
             >
               {item.label}
@@ -73,36 +74,40 @@ export const Header: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden p-2 text-foreground hover:text-primary transition-colors touch-target"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          className="lg:hidden p-2 touch-target text-slate-200 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
+          aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen 
-            ? 'max-h-screen opacity-100 visible' 
-            : 'max-h-0 opacity-0 invisible overflow-hidden'
-        }`}
+        className={`lg:hidden transition-all duration-300 ease-out ${
+          isMenuOpen
+            ? 'max-h-96 opacity-100 transform translate-y-0'
+            : 'max-h-0 opacity-0 transform -translate-y-4 pointer-events-none'
+        } overflow-hidden`}
+        style={{ backgroundColor: 'rgba(15, 23, 42, 0.98)' }}
       >
-        <div className="glass border-t border-border/20 px-4 py-6 space-y-2">
-          {menuItems.map((item) => (
+        <div className="px-4 py-6 space-y-4">
+          {menuItems.map((item, index) => (
             <Link
               key={item.label}
               to={item.href}
-              className="block text-foreground-secondary hover:text-primary transition-all duration-300 font-medium py-3 px-2 rounded-lg hover:bg-background/20 touch-target transform hover:translate-x-2"
+              className="block text-slate-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg py-3 px-4 rounded-lg hover:bg-slate-700/50 touch-target transform hover:scale-105"
               onClick={() => setIsMenuOpen(false)}
-              style={{ willChange: 'transform, color, background-color' }}
+              style={{
+                animationDelay: `${index * 0.1}s`,
+                willChange: 'transform, color'
+              }}
             >
               {item.label}
             </Link>
           ))}
-          <div className="pt-4 border-t border-border/20 mt-4">
-            <Button className="btn-hero w-full touch-target text-base py-3">
+          <div className="mt-6 pt-4 border-t border-slate-600">
+            <Button className="w-full btn-hero py-3 text-lg touch-target hover:shadow-glow transition-all duration-300 transform hover:scale-105">
               Get Started
             </Button>
           </div>

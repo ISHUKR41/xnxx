@@ -226,7 +226,7 @@ export const Enhanced3DAboutPage: React.FC = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-background relative overflow-hidden">
+      <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#0f172a', color: '#f8fafc' }}>
         <Header />
         
         {/* 3D Canvas Background */}
