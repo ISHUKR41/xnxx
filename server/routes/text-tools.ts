@@ -1,6 +1,7 @@
 import express from 'express';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import * as fs from 'fs';
+import * as path from 'path';
 
 const router = express.Router();
 

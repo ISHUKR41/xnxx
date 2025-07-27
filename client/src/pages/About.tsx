@@ -4,13 +4,18 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Header } from '@/components/StudentHub/Header';
+import { Link } from 'wouter';
 import * as THREE from 'three';
 import {
   Users, Award, Target, Lightbulb, Heart, Globe, 
   TrendingUp, CheckCircle, Star, BookOpen, 
   Zap, Shield, Clock, Sparkles, Database,
   Cpu, Cloud, Lock, Rocket, Brain, Eye,
-  Coffee, Headphones, Code, Palette
+  Coffee, Headphones, Code, Palette, Home,
+  ArrowLeft, Mail, Phone, MapPin, Calendar,
+  Download, FileText, Video, Mic, Camera,
+  Monitor, Smartphone, Tablet, Wifi, Bluetooth
 } from 'lucide-react';
 
 const About: React.FC = () => {
@@ -210,8 +215,11 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Header Navigation */}
+      <Header />
+      
       {/* Hero Section with 3D Animation */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
         
         <div className="container mx-auto px-4 relative z-10">
