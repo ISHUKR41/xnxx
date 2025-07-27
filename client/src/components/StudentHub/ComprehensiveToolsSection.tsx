@@ -570,10 +570,22 @@ export const ComprehensiveToolsSection: React.FC = () => {
       {/* Tool Modal */}
       {selectedTool && (
         <ToolModal
+          tool={{
+            id: selectedTool.id,
+            title: selectedTool.title,
+            description: `Professional ${selectedTool.title.toLowerCase()} tool`,
+            category: 'Tools',
+            icon: null,
+            color: 'blue',
+            premium: false,
+            popular: false,
+            new: false,
+            endpoint: `/api/tools/${selectedTool.id}`,
+            inputType: 'file',
+            features: ['Fast Processing', 'High Quality', 'Secure']
+          }}
           isOpen={!!selectedTool}
           onClose={closeTool}
-          toolId={selectedTool.id}
-          toolTitle={selectedTool.title}
         />
       )}
     </section>

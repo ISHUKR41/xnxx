@@ -12,7 +12,7 @@ import * as THREE from 'three';
 import {
   FileText, Image, Type, Brain, Upload, Download,
   Settings, Zap, Crown, Star, CheckCircle, AlertCircle,
-  Loader2, Scissors, Combine, Shield, Compress,
+  Loader2, Scissors, Combine, Shield, Archive,
   RefreshCw, Palette, Crop, Maximize, Minimize,
   RotateCw, FlipHorizontal, FlipVertical, Eye,
   Copy, Share, Save, Trash2, Edit, Wand2,
@@ -58,7 +58,7 @@ export const EnhancedToolsInterface: React.FC = () => {
           id: 'pdf-compress',
           name: 'Compress PDF',
           description: 'Reduce PDF file size while maintaining quality',
-          icon: Compress,
+          icon: Archive,
           premium: false,
           endpoint: '/api/pdf/compress',
           options: ['compressionLevel']
@@ -111,7 +111,7 @@ export const EnhancedToolsInterface: React.FC = () => {
           id: 'image-compress',
           name: 'Compress Images',
           description: 'Reduce image file size with smart compression',
-          icon: Compress,
+          icon: Archive,
           premium: false,
           endpoint: '/api/image/compress-advanced',
           options: ['quality', 'compressionLevel', 'preserveMetadata', 'outputFormat']
