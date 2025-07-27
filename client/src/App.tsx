@@ -11,7 +11,7 @@ import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
-  <div className="dark min-h-screen" style={{ backgroundColor: '#0f172a', color: '#f8fafc' }}>
+  <div className="dark min-h-screen bg-black text-white" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />

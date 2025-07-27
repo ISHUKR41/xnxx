@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
           ? 'backdrop-blur-lg shadow-lg py-1 sm:py-2' 
           : 'bg-transparent py-2 sm:py-4'
       }`}
-      style={{ backgroundColor: isScrolled ? 'rgba(15, 23, 42, 0.95)' : 'transparent' }}
+      style={{ backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.95)' : 'transparent' }}
     >
       <nav className="container mx-auto px-3 sm:px-4 lg:px-6 flex items-center justify-between">
         {/* Enhanced 3D Animated Logo */}
@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
           <AnimatedLogo3D size="md" className="hidden sm:block" />
           <AnimatedLogo3D size="sm" className="sm:hidden" />
           <div className="relative">
-            <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold gradient-text group-hover:animate-pulse text-white">
+            <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold group-hover:animate-pulse text-white">
               <span className="hidden sm:inline">📚 STUDENTHUB.COM</span>
               <span className="sm:hidden">📚 STUDENTHUB</span>
             </span>
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
             <Link
               key={item.label}
               to={item.href}
-              className="text-slate-200 hover:text-blue-400 transition-colors duration-300 font-medium text-sm xl:text-base py-2 px-1 touch-target hover:scale-105 transform"
+              className="text-gray-200 hover:text-blue-400 transition-colors duration-300 font-medium text-sm xl:text-base py-2 px-1 touch-target hover:scale-105 transform"
               style={{ willChange: 'transform, color' }}
             >
               {item.label}
@@ -75,7 +75,7 @@ export const Header: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden p-2 touch-target text-slate-200 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
+          className="lg:hidden p-2 touch-target text-gray-200 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -89,14 +89,14 @@ export const Header: React.FC = () => {
             ? 'max-h-96 opacity-100 transform translate-y-0'
             : 'max-h-0 opacity-0 transform -translate-y-4 pointer-events-none'
         } overflow-hidden`}
-        style={{ backgroundColor: 'rgba(15, 23, 42, 0.98)' }}
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.98)' }}
       >
         <div className="px-4 py-6 space-y-4">
           {menuItems.map((item, index) => (
             <Link
               key={item.label}
               to={item.href}
-              className="block text-slate-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg py-3 px-4 rounded-lg hover:bg-slate-700/50 touch-target transform hover:scale-105"
+              className="block text-gray-200 hover:text-blue-400 transition-all duration-300 font-medium text-lg py-3 px-4 rounded-lg hover:bg-gray-800/50 touch-target transform hover:scale-105"
               onClick={() => setIsMenuOpen(false)}
               style={{
                 animationDelay: `${index * 0.1}s`,
@@ -106,7 +106,7 @@ export const Header: React.FC = () => {
               {item.label}
             </Link>
           ))}
-          <div className="mt-6 pt-4 border-t border-slate-600">
+          <div className="mt-6 pt-4 border-t border-gray-600">
             <Button className="w-full btn-hero py-3 text-lg touch-target hover:shadow-glow transition-all duration-300 transform hover:scale-105">
               Get Started
             </Button>

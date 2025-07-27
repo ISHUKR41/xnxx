@@ -309,7 +309,7 @@ export const EnhancedHeroSection: React.FC = () => {
           
           {/* Hero Badge */}
           <div className="flex justify-center animate-bounce">
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors">
+            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium bg-blue-600/10 text-blue-400 border-blue-400/20 hover:bg-blue-600/20 transition-colors">
               <Star className="w-4 h-4 mr-2" />
               India's #1 Educational Platform
               <TrendingUp className="w-4 h-4 ml-2" />
@@ -318,13 +318,13 @@ export const EnhancedHeroSection: React.FC = () => {
 
           {/* Main Heading */}
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-bold text-white leading-tight">
               StudentHub.com
             </h1>
-            <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground-secondary">
+            <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-gray-200">
               Your Gateway to Educational Excellence
             </h2>
-            <p className="text-lg md:text-xl lg:text-2xl text-foreground-secondary max-w-4xl mx-auto leading-relaxed px-4">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed px-4">
               Access 15,000+ question papers, practice materials, and educational tools. 
               Join 50,000+ students who trust us for their academic success.
             </p>
@@ -338,10 +338,10 @@ export const EnhancedHeroSection: React.FC = () => {
                   <div className={`${stat.color} mb-3 flex justify-center`}>
                     {stat.icon}
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-foreground-secondary">
+                  <div className="text-sm text-gray-300">
                     {stat.label}
                   </div>
                 </CardContent>
@@ -356,8 +356,8 @@ export const EnhancedHeroSection: React.FC = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                   <Search className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Smart Search</h3>
-                <p className="text-sm text-foreground-secondary">
+                <h3 className="text-xl font-bold text-white">Smart Search</h3>
+                <p className="text-sm text-gray-200">
                   Find exactly what you need with our AI-powered search across 15,000+ papers
                 </p>
               </CardContent>
@@ -368,8 +368,8 @@ export const EnhancedHeroSection: React.FC = () => {
                 <div className="w-16 h-16 bg-gradient-secondary rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                   <Download className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Instant Download</h3>
-                <p className="text-sm text-foreground-secondary">
+                <h3 className="text-xl font-bold text-white">Instant Download</h3>
+                <p className="text-sm text-gray-200">
                   High-quality PDF downloads ready in seconds, no registration required
                 </p>
               </CardContent>
@@ -380,8 +380,8 @@ export const EnhancedHeroSection: React.FC = () => {
                 <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Exam Focused</h3>
-                <p className="text-sm text-foreground-secondary">
+                <h3 className="text-xl font-bold text-white">Exam Focused</h3>
+                <p className="text-sm text-gray-200">
                   Curated content for JEE, NEET, CBSE, State Boards, and competitive exams
                 </p>
               </CardContent>
@@ -397,7 +397,7 @@ export const EnhancedHeroSection: React.FC = () => {
               </Button>
             </Link>
             
-            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary/20 text-primary hover:bg-primary/10 px-8 py-4 rounded-full group">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-blue-400/20 text-blue-400 hover:bg-blue-400/10 px-8 py-4 rounded-full group">
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               Watch Demo
             </Button>
@@ -405,19 +405,19 @@ export const EnhancedHeroSection: React.FC = () => {
 
           {/* Trust Indicators */}
           <div className="flex flex-wrap justify-center items-center gap-8 pt-8 opacity-70">
-            <div className="flex items-center gap-2 text-sm text-foreground-secondary">
+            <div className="flex items-center gap-2 text-sm text-gray-300">
               <Shield className="w-4 h-4" />
               100% Secure
             </div>
-            <div className="flex items-center gap-2 text-sm text-foreground-secondary">
+            <div className="flex items-center gap-2 text-sm text-gray-300">
               <Zap className="w-4 h-4" />
               Lightning Fast
             </div>
-            <div className="flex items-center gap-2 text-sm text-foreground-secondary">
+            <div className="flex items-center gap-2 text-sm text-gray-300">
               <Heart className="w-4 h-4" />
               Trusted by 50K+ Students
             </div>
-            <div className="flex items-center gap-2 text-sm text-foreground-secondary">
+            <div className="flex items-center gap-2 text-sm text-gray-300">
               <Globe className="w-4 h-4" />
               Available 24/7
             </div>
@@ -427,7 +427,7 @@ export const EnhancedHeroSection: React.FC = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" onClick={scrollToContent}>
-        <div className="flex flex-col items-center space-y-2 text-foreground-secondary hover:text-primary transition-colors">
+        <div className="flex flex-col items-center space-y-2 text-gray-300 hover:text-blue-400 transition-colors">
           <Mouse className="w-6 h-6" />
           <ChevronDown className="w-4 h-4" />
           <span className="text-xs font-medium">Scroll to explore</span>

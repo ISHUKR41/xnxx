@@ -36,12 +36,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           })}
         </div>
       </div>
-      <CardTitle className="text-base sm:text-lg lg:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+      <CardTitle className="text-base sm:text-lg lg:text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
         {title}
       </CardTitle>
     </CardHeader>
     <CardContent className="pt-0 flex-1">
-      <p className="text-foreground-secondary text-center leading-relaxed text-sm sm:text-base">
+      <p className="text-gray-200 text-center leading-relaxed text-sm sm:text-base">
         {description}
       </p>
     </CardContent>

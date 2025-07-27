@@ -19,7 +19,7 @@ import { ComprehensiveToolsSection } from './ComprehensiveToolsSection';
 
 export const LandingPage: React.FC = () => {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0f172a', color: '#f8fafc' }}>
+    <div className="min-h-screen bg-black text-white" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
       {/* Header */}
       <Header />
       
