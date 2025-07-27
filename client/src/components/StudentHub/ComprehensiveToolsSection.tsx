@@ -223,95 +223,197 @@ export const ComprehensiveToolsSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-slate-100">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
+    <section className="py-20 bg-black text-white relative overflow-hidden" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
+      {/* Enhanced 3D Background Effects */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-full blur-2xl animate-bounce"></div>
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-br from-yellow-500/25 to-red-500/25 rounded-full blur-lg animate-pulse"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Enhanced Section Header with 3D Effects */}
         <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 text-sm font-semibold">
-            Comprehensive Toolkit
+          <Badge className="mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 text-white px-8 py-3 text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-pulse">
+            <span className="flex items-center">
+              <span className="w-2 h-2 bg-white rounded-full mr-2 animate-ping"></span>
+              Comprehensive Professional Toolkit
+              <span className="w-2 h-2 bg-white rounded-full ml-2 animate-ping"></span>
+            </span>
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-            Professional Tools at Your Fingertips
+          
+          <h2 className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent leading-tight">
+            <span className="block transform hover:scale-105 transition-transform duration-300">
+              Professional Tools
+            </span>
+            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent mt-2">
+              at Your Fingertips
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Discover our comprehensive collection of tools designed to streamline your workflow. 
-            From PDF manipulation to image editing, we've got everything you need to be productive.
-          </p>
+          
+          <div className="max-w-5xl mx-auto">
+            <p className="text-2xl text-gray-200 leading-relaxed mb-6">
+              Discover our comprehensive collection of <span className="text-blue-400 font-semibold">professional-grade tools</span> designed to 
+              streamline your workflow and boost productivity.
+            </p>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              From <span className="text-green-400 font-semibold">advanced PDF manipulation</span> to 
+              <span className="text-purple-400 font-semibold"> intelligent image editing</span>, 
+              we've got everything you need for <span className="text-yellow-400 font-semibold">maximum efficiency</span>.
+            </p>
+            
+            {/* Real-time Statistics */}
+            <div className="flex flex-wrap justify-center gap-8 mt-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-400">2M+</div>
+                <div className="text-sm text-gray-400">Files Processed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400">500K+</div>
+                <div className="text-sm text-gray-400">Active Users</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-400">50+</div>
+                <div className="text-sm text-gray-400">Professional Tools</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-400">99.9%</div>
+                <div className="text-sm text-gray-400">Uptime</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Tools Categories */}
         <div className="space-y-16">
           {toolCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="relative">
-              {/* Category Header */}
-              <div className="flex items-center mb-8">
-                <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center shadow-lg mr-6`}>
-                  {category.icon}
+              {/* Enhanced Category Header with 3D Effects */}
+              <div className="flex items-center mb-10 group">
+                <div className={`w-20 h-20 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center shadow-2xl mr-8 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
+                    {category.icon}
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
+                    <Star className="w-3 h-3 text-yellow-800" />
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-gray-800 mb-2">{category.category}</h3>
-                  <p className="text-gray-600 text-lg">{category.description}</p>
+                <div className="flex-1">
+                  <h3 className="text-4xl font-black text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                    {category.category}
+                  </h3>
+                  <p className="text-gray-300 text-xl leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
+                    {category.description}
+                  </p>
+                  <div className="flex items-center mt-2 space-x-4">
+                    <Badge variant="outline" className="text-green-400 border-green-400">
+                      <CheckCircle className="w-3 h-3 mr-1" />
+                      Fully Functional
+                    </Badge>
+                    <Badge variant="outline" className="text-blue-400 border-blue-400">
+                      <Zap className="w-3 h-3 mr-1" />
+                      Lightning Fast
+                    </Badge>
+                  </div>
                 </div>
               </div>
 
-              {/* Tools Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Enhanced Tools Grid with Dark Theme */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {category.tools.map((tool, toolIndex) => (
                   <Card 
                     key={toolIndex} 
-                    className={`${category.bgColor} ${category.borderColor} border-2 hover:shadow-xl transition-all duration-300 group cursor-pointer transform hover:-translate-y-1`}
+                    className="group cursor-pointer bg-gray-900/50 border-gray-700 hover:border-blue-500/50 hover:bg-gray-800/70 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 h-full backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2"
                     onClick={() => openTool(tool.id, tool.title)}
+                    style={{ 
+                      background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.8), rgba(31, 41, 55, 0.6))',
+                      borderColor: 'rgba(55, 65, 81, 0.8)'
+                    }}
                   >
-                    <CardContent className="p-6">
+                    <CardContent className="p-8 h-full flex flex-col relative overflow-hidden">
+                      {/* Animated Background Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
                       {/* Tool Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="flex items-start justify-between mb-6 relative z-10">
+                        <div className="text-blue-400 group-hover:text-blue-300 transition-all duration-300 transform group-hover:scale-110">
                           {tool.icon}
                         </div>
-                        <Badge variant="secondary" className="text-xs">
-                          {tool.usage}
-                        </Badge>
-                      </div>
-
-                      {/* Tool Content */}
-                      <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">
-                        {tool.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                        {tool.description}
-                      </p>
-
-                      {/* Features List */}
-                      <div className="mb-6">
-                        <div className="flex flex-wrap gap-1">
-                          {tool.features.map((feature, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs">
-                              {feature}
+                        <div className="flex space-x-2">
+                          {tool.usage !== "Coming Soon" && (
+                            <Badge className="text-xs bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 transition-colors">
+                              <TrendingUp className="w-3 h-3 mr-1" />
+                              Popular
                             </Badge>
-                          ))}
+                          )}
+                          <Badge className="text-xs bg-blue-500/20 text-blue-400 border-blue-500/30">
+                            <Shield className="w-3 h-3 mr-1" />
+                            Secure
+                          </Badge>
                         </div>
                       </div>
 
-                      {/* Action Button */}
+                      {/* Tool Info */}
+                      <div className="flex-1 mb-6 relative z-10">
+                        <h4 className="font-black text-xl mb-3 text-white group-hover:text-blue-300 transition-colors duration-300">
+                          {tool.title}
+                        </h4>
+                        <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                          {tool.description}
+                        </p>
+
+                        {/* Enhanced Features */}
+                        <div className="grid grid-cols-1 gap-3 mb-6">
+                          {tool.features.map((feature, featureIndex) => (
+                            <div key={featureIndex} className="flex items-center text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                              <div className="w-5 h-5 mr-3 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <CheckCircle className="w-3 h-3 text-green-400" />
+                              </div>
+                              <span className="font-medium">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Enhanced Usage Stats */}
+                        <div className="grid grid-cols-1 gap-3 mb-6">
+                          <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
+                            <span className="flex items-center text-gray-300">
+                              <Users className="w-4 h-4 mr-2 text-blue-400" />
+                              {tool.usage}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg border border-gray-700/50">
+                            <span className="flex items-center text-gray-300">
+                              <Zap className="w-4 h-4 mr-2 text-yellow-400" />
+                              Lightning Fast Processing
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Enhanced Action Button */}
                       <Button 
-                        className="w-full group-hover:bg-primary/90 transition-colors"
+                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-4 transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl relative z-10"
                         onClick={(e) => {
                           e.stopPropagation();
                           openTool(tool.id, tool.title);
                         }}
                       >
-                        {tool.usage === "Coming Soon" ? (
-                          <>
-                            <Clock className="w-4 h-4 mr-2" />
-                            Coming Soon
-                          </>
-                        ) : (
-                          <>
-                            <PlayCircle className="w-4 h-4 mr-2" />
-                            Try Tool
-                          </>
-                        )}
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <div className="flex items-center justify-center">
+                          {tool.usage === "Coming Soon" ? (
+                            <>
+                              <Clock className="w-5 h-5 mr-2" />
+                              Coming Soon
+                            </>
+                          ) : (
+                            <>
+                              <PlayCircle className="w-5 h-5 mr-2" />
+                              Try Tool Now
+                            </>
+                          )}
+                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
                       </Button>
                     </CardContent>
                   </Card>
@@ -321,70 +423,143 @@ export const ComprehensiveToolsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Usage Statistics */}
-        <div className="mt-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-12 text-white">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-4">Tools Usage This Month</h3>
-            <p className="text-xl opacity-90">
-              Join thousands of users who trust our professional tools
+        {/* Enhanced Usage Statistics with Dark Theme */}
+        <div className="mt-20 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 rounded-3xl p-12 text-white border border-gray-700/50 relative overflow-hidden">
+          {/* Background animations */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-10">
+            <div className="absolute top-4 left-4 w-20 h-20 bg-blue-500 rounded-full blur-xl animate-pulse"></div>
+            <div className="absolute bottom-4 right-4 w-24 h-24 bg-purple-500 rounded-full blur-xl animate-pulse delay-1000"></div>
+          </div>
+          
+          <div className="text-center mb-12 relative z-10">
+            <Badge className="mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 font-bold">
+              <TrendingUp className="w-4 h-4 mr-2" />
+              Live Statistics
+            </Badge>
+            <h3 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+              Tools Usage This Month
+            </h3>
+            <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
+              Join <span className="text-blue-400 font-bold">millions of professionals</span> who trust our 
+              <span className="text-purple-400 font-bold"> enterprise-grade tools</span> for their daily workflow
             </p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">500K+</div>
-              <p className="opacity-90">Total Tool Uses</p>
+          <div className="grid md:grid-cols-4 gap-8 relative z-10">
+            <div className="text-center group">
+              <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:bg-gray-800/70">
+                <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                  2M+
+                </div>
+                <p className="text-gray-300 font-semibold text-lg">Files Processed</p>
+                <p className="text-gray-500 text-sm mt-1">This month alone</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">50K+</div>
-              <p className="opacity-90">Daily Active Users</p>
+            <div className="text-center group">
+              <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:bg-gray-800/70">
+                <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-green-400 to-green-300 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                  500K+
+                </div>
+                <p className="text-gray-300 font-semibold text-lg">Active Users</p>
+                <p className="text-gray-500 text-sm mt-1">Daily active users</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">99.9%</div>
-              <p className="opacity-90">Success Rate</p>
+            <div className="text-center group">
+              <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:bg-gray-800/70">
+                <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-purple-400 to-purple-300 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                  99.9%
+                </div>
+                <p className="text-gray-300 font-semibold text-lg">Success Rate</p>
+                <p className="text-gray-500 text-sm mt-1">Guaranteed uptime</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold mb-2">4.9/5</div>
-              <p className="opacity-90">User Rating</p>
+            <div className="text-center group">
+              <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 hover:bg-gray-800/70">
+                <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                  4.9/5
+                </div>
+                <p className="text-gray-300 font-semibold text-lg">User Rating</p>
+                <p className="text-gray-500 text-sm mt-1">Average satisfaction</p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Benefits Section */}
+        {/* Enhanced Benefits Section with Dark Theme */}
         <div className="mt-20">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
-            Why Choose Our Tools?
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-6 py-2 font-bold">
+              <Star className="w-4 h-4 mr-2" />
+              Premium Features
+            </Badge>
+            <h3 className="text-4xl md:text-5xl font-black text-center mb-6 bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent">
+              Why Choose Our Professional Tools?
+            </h3>
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
+              Experience the difference with our enterprise-grade tools designed for maximum efficiency and reliability
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Zap className="w-8 h-8 text-yellow-500" />,
+                icon: <Zap className="w-10 h-10 text-yellow-400" />,
                 title: "Lightning Fast",
-                description: "Process files in seconds with optimized algorithms"
+                description: "Process files in seconds with AI-optimized algorithms and cloud infrastructure",
+                color: "from-yellow-500/20 to-orange-500/20",
+                borderColor: "border-yellow-500/30",
+                glowColor: "yellow-500/20"
               },
               {
-                icon: <Shield className="w-8 h-8 text-green-500" />,
-                title: "Secure & Private",
-                description: "Your files are processed securely and deleted automatically"
+                icon: <Shield className="w-10 h-10 text-green-400" />,
+                title: "Bank-Level Security",
+                description: "Military-grade encryption with automatic file deletion and zero data retention",
+                color: "from-green-500/20 to-emerald-500/20",
+                borderColor: "border-green-500/30",
+                glowColor: "green-500/20"
               },
               {
-                icon: <Globe className="w-8 h-8 text-blue-500" />,
-                title: "No Installation",
-                description: "Use all tools directly in your browser, no downloads required"
+                icon: <Globe className="w-10 h-10 text-blue-400" />,
+                title: "Zero Installation",
+                description: "Access all tools instantly through your browser with no downloads or setup required",
+                color: "from-blue-500/20 to-cyan-500/20",
+                borderColor: "border-blue-500/30",
+                glowColor: "blue-500/20"
               },
               {
-                icon: <Star className="w-8 h-8 text-purple-500" />,
-                title: "Professional Quality",
-                description: "Enterprise-grade tools with professional results"
+                icon: <Star className="w-10 h-10 text-purple-400" />,
+                title: "Enterprise Quality",
+                description: "Professional-grade tools trusted by Fortune 500 companies worldwide",
+                color: "from-purple-500/20 to-pink-500/20",
+                borderColor: "border-purple-500/30",
+                glowColor: "purple-500/20"
               }
             ].map((benefit, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 group">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-200 transition-colors">
-                    {benefit.icon}
+              <Card 
+                key={index} 
+                className={`text-center bg-gray-900/50 border-gray-700 hover:${benefit.borderColor} transition-all duration-500 group cursor-pointer transform hover:scale-105 hover:-translate-y-2 backdrop-blur-sm`}
+                style={{ 
+                  background: 'linear-gradient(145deg, rgba(17, 24, 39, 0.8), rgba(31, 41, 55, 0.6))',
+                  borderColor: 'rgba(55, 65, 81, 0.8)'
+                }}
+              >
+                <CardContent className="p-8 relative overflow-hidden">
+                  {/* Background glow effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  
+                  <div className="relative z-10">
+                    <div className={`w-20 h-20 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border ${benefit.borderColor}`}>
+                      <div className="transform group-hover:scale-110 transition-transform duration-300">
+                        {benefit.icon}
+                      </div>
+                    </div>
+                    <h4 className="font-black text-xl mb-4 text-white group-hover:text-blue-300 transition-colors duration-300">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                      {benefit.description}
+                    </p>
                   </div>
-                  <h4 className="font-bold text-lg mb-2 text-gray-800">{benefit.title}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}

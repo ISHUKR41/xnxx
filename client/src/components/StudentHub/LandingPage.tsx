@@ -16,6 +16,8 @@ import { StatsCounter } from './StatsCounter';
 import { DetailedFeaturesSection } from './DetailedFeaturesSection';
 import { AdvancedStatsSection } from './AdvancedStatsSection';
 import { ComprehensiveToolsSection } from './ComprehensiveToolsSection';
+import { Interactive3DTourSection } from './Interactive3DTourSection';
+import { ComprehensiveBenefitsSection } from './ComprehensiveBenefitsSection';
 
 export const LandingPage: React.FC = () => {
   return (
@@ -37,6 +39,12 @@ export const LandingPage: React.FC = () => {
       
       {/* Comprehensive Tools Section */}
       <ComprehensiveToolsSection />
+      
+      {/* Interactive 3D Tour Section */}
+      <Interactive3DTourSection />
+      
+      {/* Comprehensive Benefits Section */}
+      <ComprehensiveBenefitsSection />
       
       {/* Key Features Grid */}
       <FeaturesGrid />
