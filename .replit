@@ -4,6 +4,7 @@ hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
 [nix]
 channel = "stable-25_05"
+packages = ["ghostscript", "imagemagick", "tesseract", "libreoffice", "poppler-utils", "util-linux", "cairo", "pango", "gdk-pixbuf", "fontconfig", "pkg-config"]
 
 [deployment]
 deploymentTarget = "autoscale"

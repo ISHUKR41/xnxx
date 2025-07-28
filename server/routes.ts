@@ -5,19 +5,17 @@ import imageToolsRouter from "./routes/image-tools";
 import pdfToolsRouter from "./routes/pdf-tools";
 import textToolsRouter from "./routes/text-tools";
 import comprehensiveRouter from "./routes/comprehensive-routes";
+import toolsRoutes from "./routes/toolsRoutes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
-
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
-
   // Register comprehensive tool routes with proper backend integration
   app.use("/api", comprehensiveRouter);
   app.use("/api/pdf", pdfToolsRouter);
   app.use("/api/image", imageToolsRouter);
   app.use("/api/text", textToolsRouter);
+  
+  // Add new comprehensive tools routes
+  app.use("/api/tools", toolsRoutes);
   
   // Download endpoint for processed files
   app.get("/downloads/:filename", async (req, res) => {
