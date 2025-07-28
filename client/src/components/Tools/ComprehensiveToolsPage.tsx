@@ -51,6 +51,9 @@ export const ComprehensiveToolsPage: React.FC = () => {
   const [result, setResult] = useState<any>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
+  const [toolSettings, setToolSettings] = useState<Record<string, any>>({});
+  const [usage, setUsage] = useState<Record<string, number>>({});
+  const [ratings, setRatings] = useState<Record<string, number>>({});
   const { toast } = useToast();
 
   // Comprehensive Tool Categories
@@ -127,9 +130,10 @@ export const ComprehensiveToolsPage: React.FC = () => {
           endpoint: '/api/pdf/office/powerpoint-to-pdf',
           category: 'conversion',
           usage: 'Medium',
-          rating: 4.4
+          rating: 4.5
         },
-        // PDF Image Tools
+        
+        // PDF Image Conversions
         {
           id: 'pdf-to-jpg',
           name: 'PDF to JPG',
@@ -137,65 +141,345 @@ export const ComprehensiveToolsPage: React.FC = () => {
           icon: FileImage,
           premium: false,
           endpoint: '/api/pdf/image/pdf-to-jpg',
-          category: 'image',
+          category: 'conversion',
           usage: 'High',
           rating: 4.8
         },
         {
           id: 'jpg-to-pdf',
           name: 'JPG to PDF',
-          description: 'Convert multiple JPG images to PDF document',
-          icon: FileText,
+          description: 'Convert JPG images to PDF documents',
+          icon: FileImage,
           premium: false,
           endpoint: '/api/pdf/image/jpg-to-pdf',
-          category: 'image',
+          category: 'conversion',
           usage: 'High',
-          rating: 4.9
+          rating: 4.7
         },
+        {
+          id: 'pdf-to-png',
+          name: 'PDF to PNG',
+          description: 'Convert PDF pages to PNG images with transparency',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/pdf-to-png',
+          category: 'conversion',
+          usage: 'Medium',
+          rating: 4.6
+        },
+        {
+          id: 'png-to-pdf',
+          name: 'PNG to PDF',
+          description: 'Convert PNG images to PDF documents',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/png-to-pdf',
+          category: 'conversion',
+          usage: 'Medium',
+          rating: 4.6
+        },
+        {
+          id: 'pdf-to-tiff',
+          name: 'PDF to TIFF',
+          description: 'Convert PDF to TIFF for professional printing',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/pdf-to-tiff',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.4
+        },
+        {
+          id: 'tiff-to-pdf',
+          name: 'TIFF to PDF',
+          description: 'Convert TIFF images to PDF documents',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/tiff-to-pdf',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.4
+        },
+        {
+          id: 'pdf-to-webp',
+          name: 'PDF to WebP',
+          description: 'Convert PDF to modern WebP format',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/pdf-to-webp',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.3
+        },
+        {
+          id: 'webp-to-pdf',
+          name: 'WebP to PDF',
+          description: 'Convert WebP images to PDF documents',
+          icon: FileImage,
+          premium: false,
+          endpoint: '/api/pdf/image/webp-to-pdf',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.3
+        },
+
         // Core PDF Operations
         {
           id: 'merge-pdf',
           name: 'Merge PDF',
           description: 'Combine multiple PDF files into one document',
-          icon: Merge,
+          icon: Combine,
           premium: false,
           endpoint: '/api/pdf/core/merge',
-          category: 'core',
+          category: 'manipulation',
           usage: 'Very High',
           rating: 4.9
         },
         {
           id: 'split-pdf',
           name: 'Split PDF',
-          description: 'Split PDF into multiple files by pages or ranges',
-          icon: Split,
+          description: 'Split PDF into individual pages or ranges',
+          icon: Scissors,
           premium: false,
           endpoint: '/api/pdf/core/split',
-          category: 'core',
+          category: 'manipulation',
           usage: 'Very High',
           rating: 4.8
         },
         {
           id: 'compress-pdf',
           name: 'Compress PDF',
-          description: 'Reduce PDF file size while maintaining quality',
+          description: 'Reduce PDF file size without quality loss',
           icon: Archive,
           premium: false,
           endpoint: '/api/pdf/core/compress',
-          category: 'core',
+          category: 'optimization',
           usage: 'Very High',
           rating: 4.7
         },
         {
           id: 'protect-pdf',
           name: 'Protect PDF',
-          description: 'Add password protection and set permissions',
-          icon: Lock,
+          description: 'Add password protection and permissions',
+          icon: Shield,
           premium: false,
           endpoint: '/api/pdf/core/protect',
           category: 'security',
           usage: 'High',
           rating: 4.6
+        },
+        {
+          id: 'unlock-pdf',
+          name: 'Unlock PDF',
+          description: 'Remove password protection from PDFs',
+          icon: Unlock,
+          premium: false,
+          endpoint: '/api/pdf/core/unlock',
+          category: 'security',
+          usage: 'High',
+          rating: 4.5
+        },
+        {
+          id: 'rotate-pdf',
+          name: 'Rotate PDF',
+          description: 'Rotate PDF pages to correct orientation',
+          icon: RotateCw,
+          premium: false,
+          endpoint: '/api/pdf/core/rotate',
+          category: 'manipulation',
+          usage: 'Medium',
+          rating: 4.4
+        },
+        {
+          id: 'crop-pdf',
+          name: 'Crop PDF',
+          description: 'Crop PDF pages to remove unwanted areas',
+          icon: Crop,
+          premium: false,
+          endpoint: '/api/pdf/core/crop',
+          category: 'manipulation',
+          usage: 'Medium',
+          rating: 4.3
+        },
+        {
+          id: 'organize-pdf',
+          name: 'Organize PDF',
+          description: 'Reorder, delete, and organize PDF pages',
+          icon: Grid,
+          premium: false,
+          endpoint: '/api/pdf/core/organize',
+          category: 'manipulation',
+          usage: 'Medium',
+          rating: 4.5
+        },
+        {
+          id: 'extract-pages',
+          name: 'Extract Pages',
+          description: 'Extract specific pages from PDF documents',
+          icon: Split,
+          premium: false,
+          endpoint: '/api/pdf/core/extract-pages',
+          category: 'manipulation',
+          usage: 'Medium',
+          rating: 4.4
+        },
+        {
+          id: 'watermark-pdf',
+          name: 'Watermark PDF',
+          description: 'Add text or image watermarks to PDFs',
+          icon: Droplets,
+          premium: false,
+          endpoint: '/api/pdf/core/watermark',
+          category: 'editing',
+          usage: 'Medium',
+          rating: 4.3
+        },
+        {
+          id: 'page-numbers',
+          name: 'Add Page Numbers',
+          description: 'Add page numbers to PDF documents',
+          icon: Hash,
+          premium: false,
+          endpoint: '/api/pdf/core/page-numbers',
+          category: 'editing',
+          usage: 'Medium',
+          rating: 4.2
+        },
+        {
+          id: 'repair-pdf',
+          name: 'Repair PDF',
+          description: 'Fix corrupted or damaged PDF files',
+          icon: RefreshCw,
+          premium: false,
+          endpoint: '/api/pdf/core/repair',
+          category: 'utility',
+          usage: 'Low',
+          rating: 4.1
+        },
+
+        // OCR & AI Tools
+        {
+          id: 'pdf-ocr',
+          name: 'PDF OCR',
+          description: 'Make scanned PDFs searchable with OCR',
+          icon: Scan,
+          premium: false,
+          endpoint: '/api/pdf/ai/ocr',
+          category: 'ai',
+          usage: 'High',
+          rating: 4.6
+        },
+        {
+          id: 'extract-tables',
+          name: 'Extract Tables',
+          description: 'Extract tables from PDFs to Excel format',
+          icon: Table,
+          premium: false,
+          endpoint: '/api/pdf/ai/extract-tables',
+          category: 'ai',
+          usage: 'Medium',
+          rating: 4.5
+        },
+        {
+          id: 'pdf-summary',
+          name: 'PDF Summary',
+          description: 'AI-powered document summarization',
+          icon: Brain,
+          premium: true,
+          endpoint: '/api/pdf/ai/summarize',
+          category: 'ai',
+          usage: 'Medium',
+          rating: 4.7
+        },
+        {
+          id: 'extract-text',
+          name: 'Extract Text',
+          description: 'Extract all text content from PDFs',
+          icon: Type,
+          premium: false,
+          endpoint: '/api/pdf/ai/extract-text',
+          category: 'extraction',
+          usage: 'High',
+          rating: 4.4
+        },
+        {
+          id: 'extract-images',
+          name: 'Extract Images',
+          description: 'Extract all images from PDF documents',
+          icon: Image,
+          premium: false,
+          endpoint: '/api/pdf/ai/extract-images',
+          category: 'extraction',
+          usage: 'Medium',
+          rating: 4.3
+        },
+
+        // eBook Formats
+        {
+          id: 'pdf-to-epub',
+          name: 'PDF to EPUB',
+          description: 'Convert PDF to EPUB ebook format',
+          icon: Book,
+          premium: false,
+          endpoint: '/api/pdf/ebook/pdf-to-epub',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.2
+        },
+        {
+          id: 'epub-to-pdf',
+          name: 'EPUB to PDF',
+          description: 'Convert EPUB ebooks to PDF format',
+          icon: Book,
+          premium: false,
+          endpoint: '/api/pdf/ebook/epub-to-pdf',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.1
+        },
+        {
+          id: 'pdf-to-html',
+          name: 'PDF to HTML',
+          description: 'Convert PDF to HTML for web publishing',
+          icon: Globe,
+          premium: false,
+          endpoint: '/api/pdf/ebook/pdf-to-html',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 4.0
+        },
+        {
+          id: 'html-to-pdf',
+          name: 'HTML to PDF',
+          description: 'Convert HTML web pages to PDF',
+          icon: Globe,
+          premium: false,
+          endpoint: '/api/pdf/ebook/html-to-pdf',
+          category: 'conversion',
+          usage: 'Medium',
+          rating: 4.3
+        },
+        {
+          id: 'pdf-to-txt',
+          name: 'PDF to TXT',
+          description: 'Convert PDF to plain text format',
+          icon: Type,
+          premium: false,
+          endpoint: '/api/pdf/ebook/pdf-to-txt',
+          category: 'conversion',
+          usage: 'Medium',
+          rating: 4.0
+        },
+        {
+          id: 'txt-to-pdf',
+          name: 'TXT to PDF',
+          description: 'Convert plain text files to PDF format',
+          icon: Type,
+          premium: false,
+          endpoint: '/api/pdf/ebook/txt-to-pdf',
+          category: 'conversion',
+          usage: 'Low',
+          rating: 3.9
         }
       ]
     },
